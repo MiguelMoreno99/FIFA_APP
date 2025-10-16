@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">DIY App</string>
+
+    //Bottom Bar
+    <string name="explore">Explore</string>
+    <string name="favorites">Favorites</string>
+    <string name="create">Create</string>
+    <string name="creations">Creations</string>
+    <string name="account">Account</string>
+    <string name="manage_account">Manage Account</string>
+
+    //Login, register, Manage Account
+    <string name="mail">Mail</string>
+    <string name="newPassword">New Password (If you Want to change it)</string>
+    <string name="password">Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="updateInfo">Update Info</string>
+    <string name="updatePhoto">Update Photo</string>
+    <string name="uploadPhoto">Upload Photo</string>
+    <string name="logOut">Log Out</string>
+    <string name="name">Name</string>
+    <string name="lastName">Last Name</string>
+
+    //FeedItem
+    <string name="userName">User Name</string>
+    <string name="category">Category</string>
+    <string name="photos">Instruction Photos</string>
+    <string name="likes">Likes</string>
+    <string name="numberLikes">999</string>
+    <string name="dateCreation">Date of Creation</string>
+    <string name="title">Title</string>
+
+    //New Publication
+    <string name="titlePublication">Title</string>
+    <string name="titleText">Write a Title for the Publication</string>
+    <string name="btnTextImage">Load Main Photo</string>
+    <string name="btnTextImages">Load Instructions Photos</string>
+    <string name="description">Description</string>
+    <string name="descriptionText">Write a Description about your DIY</string>
+    <string name="options">Select an Option Theme for your DIY</string>
+    <string name="instructions">Instructions</string>
+    <string name="instructionsText">Write your detailed instructions</string>
+    <string name="publish">Publish DIY</string>
+
+    //Buttons Feed Details
+    <string name="addFavorite">Add to Favorites</string>
+    <string name="removeFavorite">Remove from Favorites</string>
+    <string name="edit">Edit Publication</string>
+    <string name="delete">Delete Publication</string>
+    <string name="update_main_image">Update Main Photo</string>
+    <string name="update_instruction_photos">Update Instructions Photos</string>
+
+    //Messages
+    <string name="loginFirst">You need to Login First!</string>
+    <string name="loginSuccessful">Login Successful!</string>
+    <string name="logoutSuccessful">Logout Successful!</string>
+    <string name="wrongCredentials">Wrong Credentials!</string>
+    <string name="differentPasswords">Different Passwords!</string>
+    <string name="checkEmail">Wrong Email Format!</string>
+    <string name="checkPassword">Wrong Password Format!</string>
+    <string name="fillFields">Fill all the fields First!</string>
+    <string name="verifyPassword">Please Verify Password!</string>
+    <string name="userUpdated">User Updated!</string>
+    <string name="userCreated">User Created!</string>
+    <string name="userAlreadyExists">Email Already Exists!</string>
+    <string name="publicationEdited">Publication Edited!</string>
+    <string name="publicationDeleted">Publication Deleted!</string>
+    <string name="publicationCreated">Publication Created!</string>
+    <string name="addedToFavorites">Added to Favorites!</string>
+    <string name="loginRequired">Login Required!</string>
+    <string name="removedFromFavorites">Removed from Favorites!</string>
+    <string name="notHaveFavorites">You not have Favorites!</string>
+    <string name="noPublications">There are no Publications!</string>
+    <string name="notHavePublications">You not have Publications!</string>
+    <string name="unableToLoadData">Unable to load Data!</string>
+    <string name="error">Error!</string>
+    <string name="error2">Something went Wrong!</string>
+
+    <string-array name="category_options">
+        <item>Reciclaje</item>
+        <item>Pintura</item>
+        <item>Reciclaje</item>
+        <item>Pintura</item>
+        <item>Decoración</item>
+        <item>Carpintería</item>
+        <item>Costura</item>
+        <item>Textil</item>
+        <item>Joyería</item>
+        <item>Papelería</item>
+        <item>Cerámica</item>
+        <item>Modelado</item>
+        <item>Jardinería</item>
+        <item>Organización</item>
+        <item>Regalos</item>
+        <item>Juguetes</item>
+        <item>Muebles</item>
+    </string-array>
+
+</resources>

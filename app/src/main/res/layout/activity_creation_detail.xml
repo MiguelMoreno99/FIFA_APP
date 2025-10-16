@@ -1,0 +1,147 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_app"
+    android:padding="16dp"
+    tools:context=".ui.detail.CreationDetailActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/title"
+            android:theme="@style/Menu_Title" />
+
+        <EditText
+            android:id="@+id/editTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:theme="@style/Feed_Letters" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/category"
+            android:theme="@style/Feed_Letters" />
+
+        <Spinner
+            android:id="@+id/spinnerOptionsTheme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:theme="@style/Feed_Letters2" />
+
+        <ImageView
+            android:id="@+id/imageViewMain"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo" />
+
+        <Button
+            android:id="@+id/buttonUpdateMainImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/buttons"
+            android:text="@string/update_main_image"
+            android:theme="@style/Feed_Letters" />
+
+        <TextView
+            android:id="@+id/textViewPhotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/photos"
+            android:theme="@style/Feed_Letters2" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewInstructionPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/buttonUpdateInstructionPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/buttons"
+            android:text="@string/update_instruction_photos"
+            android:theme="@style/Feed_Letters" />
+
+        <TextView
+            android:id="@+id/textViewDescriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/description"
+            android:theme="@style/Feed_Letters" />
+
+        <EditText
+            android:id="@+id/editTextDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:minLines="5"
+            android:padding="8dp"
+            android:theme="@style/Feed_Letters2" />
+
+        <TextView
+            android:id="@+id/textViewInstructionsText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/instructions"
+            android:theme="@style/Feed_Letters" />
+
+        <EditText
+            android:id="@+id/editTextInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:minLines="5"
+            android:padding="8dp"
+            android:theme="@style/Feed_Letters2" />
+
+        <Button
+            android:id="@+id/buttonEditPublication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/buttons"
+            android:text="@string/edit"
+            android:theme="@style/Feed_Letters" />
+
+        <Button
+            android:id="@+id/buttonDeletePublication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:backgroundTint="@color/buttons"
+            android:text="@string/delete"
+            android:theme="@style/Feed_Letters" />
+
+    </LinearLayout>
+</ScrollView>
