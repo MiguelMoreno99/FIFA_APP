@@ -1,117 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
-    android:layout_marginBottom="80dp"
-    android:padding="16dp">
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".ui.login.LoginFragment">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <FrameLayout
+        android:id="@+id/scanArea"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="290dp"
+        android:layout_height="290dp"
+        android:layout_margin="50dp"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/scanner_viewfinder_background"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/titlePublication"
-            android:theme="@style/Feed_Letters" />
-
-        <EditText
-            android:id="@+id/etTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/titleText"
-            android:inputType="textCapSentences"
-            android:theme="@style/Feed_Letters2" />
-
-        <ImageView
-            android:id="@+id/imageViewMainPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter" />
-
-        <Button
-            android:id="@+id/btnUploadImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/buttons"
-            android:text="@string/btnTextImage"
-            android:theme="@style/Feed_Letters2" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewInstructionPhotos"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal" />
-
-        <Button
-            android:id="@+id/btnUploadMultipleImages"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/buttons"
-            android:text="@string/btnTextImages"
-            android:theme="@style/Feed_Letters2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/description"
-            android:theme="@style/Feed_Letters" />
-
-        <EditText
-            android:id="@+id/etDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/descriptionText"
-            android:inputType="textCapSentences|textMultiLine"
-            android:theme="@style/Feed_Letters2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/options"
-            android:theme="@style/Feed_Letters" />
-
-        <Spinner
-            android:id="@+id/spinnerOptions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:theme="@style/Feed_Letters2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/instructions"
-            android:theme="@style/Feed_Letters" />
-
-        <EditText
-            android:id="@+id/etInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginTop="8dp"
-            android:autofillHints=" "
-            android:gravity="top"
-            android:hint="@string/instructionsText"
-            android:inputType="textCapSentences|textMultiLine"
-            android:theme="@style/Feed_Letters2" />
-
-        <Button
-            android:id="@+id/btnPost"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="44dp"
-            android:backgroundTint="@color/buttons"
-            android:text="@string/publish"
-            android:theme="@style/Feed_Letters" />
-
-    </LinearLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="300dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="150dp"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/Scan"
+        android:textColor="@android:color/white"
+        android:theme="@style/Feed_Letters3" />
+</LinearLayout>

@@ -19,7 +19,7 @@
             android:id="@+id/tvUserName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/userName"
+            android:text="@string/name"
             android:theme="@style/Feed_Letters" />
 
         <TextView
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@string/category"
+            android:text="@string/name"
             android:theme="@style/Feed_Letters2" />
 
         <ImageView
@@ -56,7 +56,7 @@
                     android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/title"
+                    android:text="@string/name"
                     android:theme="@style/Feed_Letters" />
 
                 <LinearLayout
@@ -69,7 +69,7 @@
                         android:id="@+id/tvLikesCountNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/numberLikes"
+                        android:text="@string/name"
                         android:theme="@style/Feed_Letters2" />
 
                     <TextView
@@ -77,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
-                        android:text="@string/likes"
+                        android:text="@string/name"
                         android:theme="@style/Feed_Letters2" />
                 </LinearLayout>
 
@@ -86,7 +86,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:text="@string/dateCreation"
+                    android:text="@string/name"
                     android:theme="@style/Feed_Letters2" />
             </LinearLayout>
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"><!-- Fondo del EditText -->
-    <solid android:color="@color/text_box" />
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/white" />
 
-    <corners android:radius="8dp" />
+    <corners android:radius="5dp" />
 
     <stroke
-        android:width="3dp"
-        android:color="@color/letters_borders" />
+        android:width="2dp"
+        android:color="@color/black" />
 
     <padding
         android:bottom="10dp"

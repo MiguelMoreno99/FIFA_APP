@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="@color/gold"
     android:padding="16dp"
     tools:context=".ui.detail.PublicationDetailActivity">
 
@@ -12,82 +12,222 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="@string/title"
-            android:theme="@style/Menu_Title" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textViewTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/category"
-            android:theme="@style/Feed_Letters" />
+            <ImageView
+                android:id="@+id/countryImage"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/logoApp"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="16dp"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/app_name" />
+
+            <ImageView
+                android:id="@+id/selectionImage"
+                android:layout_width="0dp"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:src="@drawable/logo"
+                android:contentDescription="@string/app_name" />
+
+        </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageViewMain"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:contentDescription="@string/app_name"
-            android:scaleType="fitCenter"
-            android:src="@drawable/logo" />
+            android:id="@+id/playerImage"
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:src="@drawable/logo"
+            android:contentDescription="@string/app_name" />
 
-        <TextView
-            android:id="@+id/textViewPhotos"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/photos"
-            android:theme="@style/Feed_Letters2" />
+            android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewInstructionPhotos"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal" />
-        <TextView
-            android:id="@+id/textViewDescriptionText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:text="@string/description"
-            android:theme="@style/Feed_Letters" />
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
-            android:text="@string/description"
-            android:theme="@style/Feed_Letters2" />
-        <TextView
-            android:id="@+id/textViewInstructions2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="1dp"
-            android:text="@string/instructions"
-            android:theme="@style/Feed_Letters" />
-        <TextView
-            android:id="@+id/textViewInstructions"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:text="@string/instructions"
-            android:theme="@style/Feed_Letters2" />
+            <TextView
+                android:id="@+id/textViewPersonalInformation"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/personalInformation"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:theme="@style/Menu_Title" />
 
-        <Button
-            android:id="@+id/buttonAddToFavorites"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="80dp"
-            android:backgroundTint="@color/buttons"
-            android:text="@string/addFavorite"
-            android:theme="@style/Feed_Letters" />
+            <TextView
+                android:id="@+id/textViewFullName"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/fullName"
+                android:layout_weight="1"
+                android:theme="@style/Feed_Letters2" />
 
+            <TextView
+                android:id="@+id/textViewFullNamePlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/fullNamePlayer"
+                android:layout_weight="1"
+                android:theme="@style/Feed_Letters" />
+
+            <TextView
+                android:id="@+id/textViewBirth"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:text="@string/birth"
+                android:theme="@style/Feed_Letters2" />
+
+            <TextView
+                android:id="@+id/textViewBirthPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/birthPlayer"
+                android:theme="@style/Feed_Letters" />
+            <TextView
+                android:id="@+id/textViewPosition"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/position"
+                android:theme="@style/Feed_Letters2" />
+            <TextView
+                android:id="@+id/textViewPositionPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/positionPlayer"
+                android:theme="@style/Feed_Letters" />
+            <TextView
+                android:id="@+id/textViewHeight"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/height"
+                android:theme="@style/Feed_Letters2" />
+            <TextView
+                android:id="@+id/textViewHeightPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/heightPlayer"
+                android:theme="@style/Feed_Letters" />
+            <TextView
+                android:id="@+id/textViewCareerInformation"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/careerInformation"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:theme="@style/Menu_Title" />
+            <TextView
+                android:id="@+id/textViewCurrentTeam"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/currentTeam"
+                android:layout_weight="1"
+                android:theme="@style/Feed_Letters2" />
+
+            <TextView
+                android:id="@+id/textViewCurrentTeamPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:text="@string/currentTeamPlayer"
+                android:layout_weight="1"
+                android:theme="@style/Feed_Letters" />
+
+            <TextView
+                android:id="@+id/textViewFirstTeam"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="20dp"
+                android:layout_weight="1"
+                android:text="@string/firstTeam"
+                android:theme="@style/Feed_Letters2" />
+
+            <TextView
+                android:id="@+id/textViewFirstTeamPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/firstTeamPlayer"
+                android:theme="@style/Feed_Letters" />
+            <TextView
+                android:id="@+id/textViewSelectionAchievements"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/selectionAchievements"
+                android:theme="@style/Feed_Letters2" />
+            <TextView
+                android:id="@+id/textViewSelectionAchievementsPlayer"
+                android:layout_width="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:text="@string/selectionAchievementsPlayer"
+                android:theme="@style/Feed_Letters" />
+
+            <Button
+                android:id="@+id/buttonAddToFavorites"
+                android:layout_width="310dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="80dp"
+                android:backgroundTint="@color/black"
+                android:text="@string/addFavorite"
+                android:theme="@style/Feed_Letters2" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -20,6 +20,7 @@ lifecycle-runtime-ktx = "2.7.0"
 dagger-hilt = "2.50"
 ksp = "1.9.23-1.0.20"
 adapters = "3.2.0-alpha11"
+zxingAndroidEmbedded = "4.3.0"
 
 [libraries]
 androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activity" }
@@ -55,6 +56,7 @@ retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-
 coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
 androidx-adapters = { group = "androidx.databinding", name = "adapters", version.ref = "adapters" }
+zxing-android-embedded = { module = "com.journeyapps:zxing-android-embedded", version.ref = "zxingAndroidEmbedded" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

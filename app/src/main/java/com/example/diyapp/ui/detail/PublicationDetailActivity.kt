@@ -36,16 +36,15 @@ class PublicationDetailActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.publication.observe(this) { item ->
             binding.apply {
-                textViewTitle.text = item.title
-                textViewTheme.text = item.theme
-                textViewDescription.text = item.description
-                textViewInstructions.text = item.instructions
-                imageViewMain.setImageBitmap(ImageUtils.base64ToBitmap(item.photoMain))
-
-                recyclerViewInstructionPhotos.layoutManager = LinearLayoutManager(
-                    this@PublicationDetailActivity, LinearLayoutManager.HORIZONTAL, false
-                )
-                recyclerViewInstructionPhotos.adapter = InstructionsAdapter(item.photoProcess)
+                textViewFullNamePlayer.text = item.title
+                textViewBirthPlayer.text = item.theme
+                textViewPositionPlayer.text = item.description
+                textViewHeightPlayer.text = item.instructions
+                playerImage.setImageBitmap(ImageUtils.base64ToBitmap(item.photoMain))
+//                recyclerViewInstructionPhotos.layoutManager = LinearLayoutManager(
+//                    this@PublicationDetailActivity, LinearLayoutManager.HORIZONTAL, false
+//                )
+//                recyclerViewInstructionPhotos.adapter = InstructionsAdapter(item.photoProcess)
             }
         }
 

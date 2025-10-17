@@ -1,24 +1,50 @@
 <resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.DIYapp" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@color/others</item>
+        <item name="android:statusBarColor">@color/red</item>
     </style>
 
     <style name="Theme.DIYapp" parent="Base.Theme.DIYapp" />
 
     <style name="Menu_Title">
         <item name="android:textStyle">bold</item>
-        <item name="fontFamily">@font/rice</item>
+        <item name="fontFamily">@font/fifa_font</item>
         <item name="android:textSize">35sp</item>
-        <item name="android:textColor">@color/letters_borders</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name="Feed_Letters" parent="Menu_Title">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
     </style>
 
     <style name="Feed_Letters2" parent="Menu_Title">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Feed_Letters3" parent="Menu_Title">
+        <item name="android:textSize">38sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Menu_Title_White">
+        <item name="android:textStyle">bold</item>
+        <item name="fontFamily">@font/fifa_font</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Feed_Letters_White" parent="Menu_Title_White">
+        <item name="android:textSize">5sp</item>
+    </style>
+
+    <style name="Feed_Letters2_White" parent="Menu_Title_White">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Feed_Letters3_White" parent="Menu_Title_White">
+        <item name="android:textSize">20sp</item>
         <item name="android:textStyle">normal</item>
     </style>
 

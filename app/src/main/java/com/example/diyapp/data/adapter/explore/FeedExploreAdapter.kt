@@ -21,23 +21,23 @@ class FeedExploreAdapter(
 
     inner class FeedExploreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val userName: TextView = view.findViewById(R.id.tvUserName)
-        private val category: TextView = view.findViewById(R.id.tvCategory)
-        private val title: TextView = view.findViewById(R.id.tvTitle)
-        private val likesCountNumber: TextView = view.findViewById(R.id.tvLikesCountNumber)
-        private val creationDate: TextView = view.findViewById(R.id.tvCreationDate)
-        private val photoMain: ImageView = view.findViewById(R.id.ivMainImage)
-        fun render(feedExploreModel: CreationModel) {
-            userName.text = feedExploreModel.email
-            category.text = feedExploreModel.theme
-            title.text = feedExploreModel.title
-            likesCountNumber.text = feedExploreModel.numLikes.toString()
-            creationDate.text = feedExploreModel.dateCreation
-
-            photoMain.setImageBitmap(ImageUtils.base64ToBitmap(feedExploreModel.photoMain))
-
-            itemView.setOnClickListener { onClick(feedExploreModel) }
-        }
+//        private val userName: TextView = view.findViewById(R.id.tvUserName)
+//        private val category: TextView = view.findViewById(R.id.tvCategory)
+//        private val title: TextView = view.findViewById(R.id.tvTitle)
+//        private val likesCountNumber: TextView = view.findViewById(R.id.tvLikesCountNumber)
+//        private val creationDate: TextView = view.findViewById(R.id.tvCreationDate)
+//        private val photoMain: ImageView = view.findViewById(R.id.ivMainImage)
+//        fun render(feedExploreModel: CreationModel) {
+//            userName.text = feedExploreModel.email
+//            category.text = feedExploreModel.theme
+//            title.text = feedExploreModel.title
+//            likesCountNumber.text = feedExploreModel.numLikes.toString()
+//            creationDate.text = feedExploreModel.dateCreation
+//
+//            photoMain.setImageBitmap(ImageUtils.base64ToBitmap(feedExploreModel.photoMain))
+//
+//            itemView.setOnClickListener { onClick(feedExploreModel) }
+//        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedExploreViewHolder {
@@ -72,7 +72,7 @@ class FeedExploreAdapter(
 
     override fun onBindViewHolder(holder: FeedExploreViewHolder, position: Int) {
         val item = filteredList[position]
-        holder.render(item)
+//        holder.render(item)
     }
 
     @SuppressLint("NotifyDataSetChanged")

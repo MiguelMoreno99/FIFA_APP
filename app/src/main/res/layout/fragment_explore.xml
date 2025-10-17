@@ -4,22 +4,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="80dp"
-    android:background="@color/background_app"
+    android:background="@color/white"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ui.explore.ExploreFragment">
 
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="100dp"
+        android:layout_height="90dp"
+        android:layout_margin="0dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/logo" />
+
     <androidx.appcompat.widget.SearchView
         android:id="@+id/svExplore"
-        android:layout_width="match_parent"
+        android:layout_width="380dp"
+        android:layout_gravity="center_horizontal"
         android:layout_height="50dp"
-        android:background="@color/others" />
+        android:layout_marginTop="100dp"
+        android:background="@drawable/searchview_background" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerFeedExplore"
-        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp" />
+        android:layout_marginTop="160dp" />
 
     <ProgressBar
         android:id="@+id/progressBar"

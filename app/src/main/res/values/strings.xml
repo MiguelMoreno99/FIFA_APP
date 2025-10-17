@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">DIY App</string>
+    <string name="app_name">FIFA ALBUM App</string>
 
     //Bottom Bar
-    <string name="explore">Explore</string>
-    <string name="favorites">Favorites</string>
-    <string name="create">Create</string>
+    <string name="explore">My Album</string>
+    <string name="favorites">favorites</string>
+    <string name="scan">Scan</string>
     <string name="creations">Creations</string>
     <string name="account">Account</string>
     <string name="manage_account">Manage Account</string>
@@ -14,6 +14,7 @@
     <string name="newPassword">New Password (If you Want to change it)</string>
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
+    <string name="Scan">Scan</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
     <string name="updateInfo">Update Info</string>
@@ -23,14 +24,28 @@
     <string name="name">Name</string>
     <string name="lastName">Last Name</string>
 
-    //FeedItem
-    <string name="userName">User Name</string>
-    <string name="category">Category</string>
-    <string name="photos">Instruction Photos</string>
-    <string name="likes">Likes</string>
-    <string name="numberLikes">999</string>
-    <string name="dateCreation">Date of Creation</string>
-    <string name="title">Title</string>
+    //CardItemDetails
+    <string name="fullNamePlayer">Raúl Alonso Jiménez Rodríguez</string>
+    <string name="shortNamePlayer">Raúl Jiménez</string>
+    <string name="shortPositionPlayer">ST</string>
+    <string name="numberPlayer">10</string>
+    <string name="birthPlayer">May 6, 1999, Monterrey, N.L., México</string>
+    <string name="positionPlayer">Striker (ST)</string>
+    <string name="heightPlayer">6 FT 3 IN (1.90 M)</string>
+    <string name="currentTeamPlayer">Fulham (England)</string>
+    <string name="firstTeamPlayer">Club America (2011 to 2014)</string>
+    <string name="selectionAchievementsPlayer">OLYMPICS GAMES GOLD MEDAL 2012 (sub-23), CONCACAF GOLD CUP(2019, 2025), CONCACAF NATIONS LEAGUE (2025)</string>
+
+    //CardItemDetailsStatic
+    <string name="personalInformation">PERSONAL INFORMATION</string>
+    <string name="fullName">FULL NAME:</string>
+    <string name="birth">BIRTH:</string>
+    <string name="position">POSITION:</string>
+    <string name="height">HEIGHT:</string>
+    <string name="careerInformation">CAREER INFORMATION</string>
+    <string name="currentTeam">CURRENT TEAM:</string>
+    <string name="firstTeam">FIRST TEAM:</string>
+    <string name="selectionAchievements">SELECTION ACHIEVEMENTS</string>
 
     //New Publication
     <string name="titlePublication">Title</string>
@@ -45,8 +60,8 @@
     <string name="publish">Publish DIY</string>
 
     //Buttons Feed Details
-    <string name="addFavorite">Add to Favorites</string>
-    <string name="removeFavorite">Remove from Favorites</string>
+    <string name="addFavorite">Add Card to Favorites</string>
+    <string name="removeFavorite">Remove Card from Favorites</string>
     <string name="edit">Edit Publication</string>
     <string name="delete">Delete Publication</string>
     <string name="update_main_image">Update Main Photo</string>
@@ -65,18 +80,25 @@
     <string name="userUpdated">User Updated!</string>
     <string name="userCreated">User Created!</string>
     <string name="userAlreadyExists">Email Already Exists!</string>
-    <string name="publicationEdited">Publication Edited!</string>
-    <string name="publicationDeleted">Publication Deleted!</string>
-    <string name="publicationCreated">Publication Created!</string>
-    <string name="addedToFavorites">Added to Favorites!</string>
     <string name="loginRequired">Login Required!</string>
+    <string name="addedToFavorites">Added to Favorites!</string>
     <string name="removedFromFavorites">Removed from Favorites!</string>
-    <string name="notHaveFavorites">You not have Favorites!</string>
-    <string name="noPublications">There are no Publications!</string>
-    <string name="notHavePublications">You not have Publications!</string>
+    <string name="notHaveFavorites">You do not have Favorites!</string>
     <string name="unableToLoadData">Unable to load Data!</string>
     <string name="error">Error!</string>
     <string name="error2">Something went Wrong!</string>
+
+    <string name="scanCanceled">Scan Canceled</string>
+    <string name="scanCompleted">Scanned Successfully</string>
+    <string name="scanMessage">Point to your QR Code!</string>
+
+
+    <string name="publicationEdited">Publication Edited!</string>
+    <string name="publicationDeleted">Publication Deleted!</string>
+    <string name="publicationCreated">Publication Created!</string>
+    <string name="noPublications">There are no Publications!</string>
+    <string name="notHavePublications">You not have Publications!</string>
+
 
     <string-array name="category_options">
         <item>Reciclaje</item>

@@ -54,6 +54,8 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    //Zxing in libs.versions.toml
+    implementation(libs.zxing.android.embedded)
 
     //Nav Component in libs.versions.toml
     implementation(libs.navigation.fragment)

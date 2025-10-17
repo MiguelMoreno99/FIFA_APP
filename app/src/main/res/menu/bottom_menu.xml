@@ -2,16 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/exploreFragment"
-        android:icon="@drawable/ic_explore"
+        android:icon="@drawable/ic_book"
         android:title="@string/explore" />
     <item
         android:id="@+id/newPublicationFragment"
-        android:icon="@drawable/ic_create"
-        android:title="@string/create" />
-    <item
-        android:id="@+id/myPublicationsFragment"
-        android:icon="@drawable/ic_saved"
-        android:title="@string/creations" />
+        android:icon="@drawable/ic_camera"
+        android:title="@string/scan" />
     <item
         android:id="@+id/favoritesFragment"
         android:icon="@drawable/ic_heart"

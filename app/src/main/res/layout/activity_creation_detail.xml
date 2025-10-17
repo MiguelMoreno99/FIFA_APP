@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="@string/title"
+            android:text="@string/name"
             android:theme="@style/Menu_Title" />
 
         <EditText
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/category"
+            android:text="@string/name"
             android:theme="@style/Feed_Letters" />
 
         <Spinner
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
-            android:text="@string/photos"
+            android:text="@string/name"
             android:theme="@style/Feed_Letters2" />
 
         <androidx.recyclerview.widget.RecyclerView
