@@ -48,7 +48,7 @@
 
         <ImageView
             android:id="@+id/playerImage"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="250dp"
             android:layout_marginTop="10dp"
             android:layout_gravity="center_horizontal"
@@ -63,7 +63,7 @@
 
             <TextView
                 android:id="@+id/textViewPersonalInformation"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -75,7 +75,7 @@
 
             <TextView
                 android:id="@+id/textViewFullName"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -86,7 +86,7 @@
 
             <TextView
                 android:id="@+id/textViewFullNamePlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -97,7 +97,7 @@
 
             <TextView
                 android:id="@+id/textViewBirth"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -108,16 +108,18 @@
 
             <TextView
                 android:id="@+id/textViewBirthPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
+                android:layout_marginHorizontal="20dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/birthPlayer"
                 android:theme="@style/Feed_Letters" />
             <TextView
                 android:id="@+id/textViewPosition"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -125,7 +127,8 @@
                 android:theme="@style/Feed_Letters2" />
             <TextView
                 android:id="@+id/textViewPositionPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -133,7 +136,8 @@
                 android:theme="@style/Feed_Letters" />
             <TextView
                 android:id="@+id/textViewHeight"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -141,7 +145,8 @@
                 android:theme="@style/Feed_Letters2" />
             <TextView
                 android:id="@+id/textViewHeightPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -149,7 +154,7 @@
                 android:theme="@style/Feed_Letters" />
             <TextView
                 android:id="@+id/textViewCareerInformation"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -160,7 +165,7 @@
                 android:theme="@style/Menu_Title" />
             <TextView
                 android:id="@+id/textViewCurrentTeam"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -171,7 +176,7 @@
 
             <TextView
                 android:id="@+id/textViewCurrentTeamPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -182,7 +187,7 @@
 
             <TextView
                 android:id="@+id/textViewFirstTeam"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -193,7 +198,8 @@
 
             <TextView
                 android:id="@+id/textViewFirstTeamPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="1dp"
@@ -202,7 +208,8 @@
                 android:theme="@style/Feed_Letters" />
             <TextView
                 android:id="@+id/textViewSelectionAchievements"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -210,7 +217,8 @@
                 android:theme="@style/Feed_Letters2" />
             <TextView
                 android:id="@+id/textViewSelectionAchievementsPlayer"
-                android:layout_width="330dp"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="20dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
@@ -219,8 +227,9 @@
 
             <Button
                 android:id="@+id/buttonAddToFavorites"
-                android:layout_width="310dp"
+                android:layout_width="match_parent"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="40dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="80dp"
