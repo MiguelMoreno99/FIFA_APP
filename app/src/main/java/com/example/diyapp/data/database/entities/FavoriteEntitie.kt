@@ -5,12 +5,12 @@ import androidx.room.ForeignKey
 
 @Entity(
     tableName = "favoritesTable",
-    primaryKeys = ["email", "idPublication"],
+    primaryKeys = ["CORREO_USUARIO", "idPublication"],
     foreignKeys = [
         ForeignKey(
             entity = UserEntity::class,
-            parentColumns = ["email"],
-            childColumns = ["email"],
+            parentColumns = ["CORREO_USUARIO"],
+            childColumns = ["CORREO_USUARIO"],
             onDelete = ForeignKey.CASCADE
         ),
         ForeignKey(
@@ -22,6 +22,6 @@ import androidx.room.ForeignKey
     ]
 )
 data class FavoriteEntity(
-    val email: String,
+    val CORREO_USUARIO: String,
     val idPublication: Int
 )

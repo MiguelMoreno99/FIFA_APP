@@ -18,7 +18,7 @@ class PublicationDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPublicationDetailBinding
     private lateinit var args: PublicationDetailActivityArgs
     private val viewModel: PublicationDetailViewModel by viewModels()
-    private var email: String = ""
+    private var CORREO_USUARIO: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class PublicationDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         args = PublicationDetailActivityArgs.fromBundle(intent.extras!!)
-        email = SessionManager.getUserInfo(this)["email"]!!
+        CORREO_USUARIO = SessionManager.getUserInfo(this)["CORREO_USUARIO"]!!
         viewModel.loadPublicationInfo(args.exploreToDetail)
 
         setupObservers()
@@ -66,7 +66,7 @@ class PublicationDetailActivity : AppCompatActivity() {
         binding.buttonAddToFavorites.setOnClickListener {
             val item = viewModel.publication.value
             if (SessionManager.isUserLoggedIn(this) && item != null) {
-                viewModel.addFavoritePublication(item.idPublication, email)
+                viewModel.addFavoritePublication(item.idPublication, CORREO_USUARIO)
             } else {
                 SessionManager.showToast(this, R.string.loginRequired)
             }

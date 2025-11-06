@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class CreationModel(
     val idPublication: Int,
-    val email: String,
+    val CORREO_USUARIO: String,
     val title: String,
     val theme: String,
     val photoMain: String,
@@ -22,7 +22,7 @@ data class CreationModel(
 
 fun FeedExplore.toDomain() = CreationModel(
     idPublication,
-    email,
+    CORREO_USUARIO,
     title,
     theme,
     photoMain,
@@ -36,7 +36,7 @@ fun FeedExplore.toDomain() = CreationModel(
 
 fun CreationEntity.toDomain() = CreationModel(
     idPublication,
-    email,
+    CORREO_USUARIO,
     title,
     theme,
     photoMain,

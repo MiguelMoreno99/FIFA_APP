@@ -52,10 +52,10 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
         }
     }
 
-    suspend fun getUser(email: String): List<User> {
+    suspend fun getUser(CORREO_USUARIO: String): List<User> {
         return withContext(Dispatchers.IO) {
             try {
-                val user = UserEmail(email)
+                val user = UserEmail(CORREO_USUARIO)
                 val call = apiService.listUser(user)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")
@@ -67,15 +67,15 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
     }
 
     suspend fun editUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): List<User> {
         return withContext(Dispatchers.IO) {
             try {
-                val user = User(email, name, lastname, password, userPhoto)
+                val user = User(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
                 val call = apiService.modifyUser(user)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")
@@ -87,21 +87,21 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
     }
 
     suspend fun registerUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): ServerResponse {
 
         return withContext(Dispatchers.IO) {
             try {
                 val user = User(
-                    email,
-                    name,
-                    lastname,
-                    password,
-                    userPhoto
+                    CORREO_USUARIO,
+                    NOMBRE_USUARIO,
+                    APELLIDO_USUARIO,
+                    CONTRASEÑA_USUARIO,
+                    FOTO_PERFIL_USUARIO
                 )
                 val call = apiService.insertUser(user)
                 val responseBody = call.body()

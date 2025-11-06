@@ -13,8 +13,8 @@ class MainViewModel : ViewModel() {
         destinationIfLoggedIn: Int,
         destinationIfNotLoggedIn: Int
     ) {
-//        if (isLoggedIn) {
-        if (true) {
+//        if (true) {
+        if (isLoggedIn) {
             navigationCommand.value = Pair(destinationIfLoggedIn, false)
         } else {
             navigationCommand.value = Pair(destinationIfNotLoggedIn, true)

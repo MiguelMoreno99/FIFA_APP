@@ -53,31 +53,31 @@ class LoginFragment : Fragment() {
     }
 
     private fun validateLogin() {
-        val email = binding.emailEditText.text.toString().trim()
-        val password = binding.passwordEditText.text.toString().trim()
+        val CORREO_USUARIO = binding.emailEditText.text.toString().trim()
+        val CONTRASEÑA_USUARIO = binding.passwordEditText.text.toString().trim()
 
-        if (email.isEmpty() || password.isEmpty()) {
+        if (CORREO_USUARIO.isEmpty() || CONTRASEÑA_USUARIO.isEmpty()) {
             SessionManager.showToast(requireContext(), R.string.fillFields)
             return
         }
 
         lifecycleScope.launch {
-            viewModel.validateUser(email, password)
+            viewModel.validateUser(CORREO_USUARIO, CONTRASEÑA_USUARIO)
         }
     }
 
     private fun saveUserSession() {
         lifecycleScope.launch {
-            val email = binding.emailEditText.text.toString().trim()
-            val user = viewModel.getUserData(email)
+            val CORREO_USUARIO = binding.emailEditText.text.toString().trim()
+            val user = viewModel.getUserData(CORREO_USUARIO)
             SessionManager.setUserLoggedIn(
                 requireContext(),
                 true,
-                user.email,
-                user.name,
-                user.lastname,
-                user.password,
-                user.userPhoto
+                user.CORREO_USUARIO,
+                user.NOMBRE_USUARIO,
+                user.APELLIDO_USUARIO,
+                user.CONTRASEÑA_USUARIO,
+                user.FOTO_PERFIL_USUARIO
             )
             SessionManager.showToast(requireContext(), R.string.loginSuccessful)
         }

@@ -63,6 +63,6 @@ class FavoriteDetailActivity : AppCompatActivity() {
 
     private fun getEmailFromSession(): String {
         val sharedPref = SessionManager.getUserInfo(this)
-        return sharedPref["email"] ?: ""
+        return sharedPref["CORREO_USUARIO"] ?: ""
     }
 }

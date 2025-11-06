@@ -11,12 +11,12 @@ class ManageAccountsViewModel @Inject constructor(
 ) : ViewModel() {
 
     suspend fun updateUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        photo: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ) {
-        useCases.editUser(email, name, lastname, password, photo)
+        useCases.editUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
     }
 }

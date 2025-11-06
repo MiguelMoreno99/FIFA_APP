@@ -30,8 +30,8 @@ class MainRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
-    suspend fun getUserFromApi(email: String): List<UserModel> {
-        val response: List<User> = api.getUser(email)
+    suspend fun getUserFromApi(CORREO_USUARIO: String): List<UserModel> {
+        val response: List<User> = api.getUser(CORREO_USUARIO)
         return response.map { it.toDomain() }
     }
 
@@ -40,13 +40,13 @@ class MainRepository @Inject constructor(
         return response.map { it.toDomain() }
     }
 
-    suspend fun getUserFromDataBase(email: String): List<UserModel> {
-        val response: List<UserEntity> = userDao.getUserInfo(email)
+    suspend fun getUserFromDataBase(CORREO_USUARIO: String): List<UserModel> {
+        val response: List<UserEntity> = userDao.getUserInfo(CORREO_USUARIO)
         return response.map { it.toDomain() }
     }
 
-    suspend fun insertUsers(user: List<UserEntity>) {
-        userDao.insertUser(user)
+    suspend fun insertUsers(CORREO_USUARIO: List<UserEntity>) {
+        userDao.insertUser(CORREO_USUARIO)
     }
 
     suspend fun insertCreations(creation: List<CreationEntity>) {
@@ -61,42 +61,42 @@ class MainRepository @Inject constructor(
         creationsDao.deleteAllPublications()
     }
 
-    suspend fun getFeedFavorite(email: String): List<FeedFavorites> {
-        val response = api.getFeedFavorite(email)
+    suspend fun getFeedFavorite(CORREO_USUARIO: String): List<FeedFavorites> {
+        val response = api.getFeedFavorite(CORREO_USUARIO)
         FeedFavoritesProvider.feedFavoritesList = response
         return response
     }
 
-    suspend fun getFeedCreations(email: String): List<FeedCreations> {
-        val response = api.getFeedCreations(email)
+    suspend fun getFeedCreations(CORREO_USUARIO: String): List<FeedCreations> {
+        val response = api.getFeedCreations(CORREO_USUARIO)
         FeedCreationsProvider.feedCreationsList = response
         return response
     }
 
     suspend fun editUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): List<User> {
-        val response = api.editUser(email, name, lastname, password, userPhoto)
+        val response = api.editUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
         return response
     }
 
     suspend fun registerUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): ServerResponse {
-        val response = api.registerUser(email, name, lastname, password, userPhoto)
+        val response = api.registerUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
         return response
     }
 
     suspend fun createPublication(
-        email: String,
+        CORREO_USUARIO: String,
         title: String,
         theme: String,
         photoMain: String,
@@ -105,7 +105,7 @@ class MainRepository @Inject constructor(
         photoProcess: List<String>
     ): ServerResponse {
         val response = api.createPublication(
-            email,
+            CORREO_USUARIO,
             title,
             theme,
             photoMain,
@@ -118,7 +118,7 @@ class MainRepository @Inject constructor(
 
     suspend fun editPublication(
         idPublication: Int,
-        email: String,
+        CORREO_USUARIO: String,
         title: String,
         theme: String,
         photoMain: String,
@@ -128,7 +128,7 @@ class MainRepository @Inject constructor(
     ): ServerResponse {
         val response = api.editPublication(
             idPublication,
-            email,
+            CORREO_USUARIO,
             title,
             theme,
             photoMain,
@@ -139,18 +139,18 @@ class MainRepository @Inject constructor(
         return response
     }
 
-    suspend fun deletePublication(idPublication: Int, email: String): ServerResponse {
-        val response = api.deletePublication(idPublication, email)
+    suspend fun deletePublication(idPublication: Int, CORREO_USUARIO: String): ServerResponse {
+        val response = api.deletePublication(idPublication, CORREO_USUARIO)
         return response
     }
 
-    suspend fun removeFavorite(idPublication: Int, email: String): ServerResponse {
-        val response = api.removeFavorite(idPublication, email)
+    suspend fun removeFavorite(idPublication: Int, CORREO_USUARIO: String): ServerResponse {
+        val response = api.removeFavorite(idPublication, CORREO_USUARIO)
         return response
     }
 
-    suspend fun addFavoritePublication(idPublication: Int, email: String): ServerResponse {
-        val response = api.addFavoritePublication(idPublication, email)
+    suspend fun addFavoritePublication(idPublication: Int, CORREO_USUARIO: String): ServerResponse {
+        val response = api.addFavoritePublication(idPublication, CORREO_USUARIO)
         return response
     }
 }

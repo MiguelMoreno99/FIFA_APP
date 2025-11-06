@@ -6,9 +6,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class User(
-    @SerializedName("correo") val email: String,
-    @SerializedName("nombre") val name: String,
-    @SerializedName("apellido") val lastname: String,
-    @SerializedName("contra") val password: String,
-    @SerializedName("foto_perfil") val userPhoto: String,
+    @SerializedName("CORREO_USUARIO") val CORREO_USUARIO: String,
+    @SerializedName("NOMBRE_USUARIO") val NOMBRE_USUARIO: String,
+    @SerializedName("APELLIDO_USUARIO") val APELLIDO_USUARIO: String,
+    @SerializedName("CONTRASEÑA_USUARIO") val CONTRASEÑA_USUARIO: String,
+    @SerializedName("FOTO_PERFIL_USUARIO") val FOTO_PERFIL_USUARIO: String,
 ) : Parcelable

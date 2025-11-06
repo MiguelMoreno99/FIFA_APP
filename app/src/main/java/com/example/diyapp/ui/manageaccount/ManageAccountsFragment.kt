@@ -37,14 +37,14 @@ class ManageAccountsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val sharedPref = SessionManager.getUserInfo(requireContext())
-        val name = sharedPref["name"]
-        val lastname = sharedPref["lastname"]
-        val profilePicture = sharedPref["photo"]
+        val NOMBRE_USUARIO = sharedPref["NOMBRE_USUARIO"]
+        val APELLIDO_USUARIO = sharedPref["APELLIDO_USUARIO"]
+        val FOTO_PERFIL_USUARIO = sharedPref["FOTO_PERFIL_USUARIO"]
 
         with(binding) {
-            nameEditText.setText(name)
-            lastNameEditText.setText(lastname)
-            profileImageView.setImageBitmap(ImageUtils.base64ToBitmap(profilePicture!!))
+            nameEditText.setText(NOMBRE_USUARIO)
+            lastNameEditText.setText(APELLIDO_USUARIO)
+            profileImageView.setImageBitmap(ImageUtils.base64ToBitmap(FOTO_PERFIL_USUARIO!!))
         }
 
         binding.logoutButton.setOnClickListener {
@@ -68,53 +68,53 @@ class ManageAccountsFragment : Fragment() {
 
     private fun validateFields() {
         val user = SessionManager.getUserInfo(requireContext())
-        val name = binding.nameEditText.text.toString().trim()
-        val lastname = binding.lastNameEditText.text.toString().trim()
-        val newPassword = binding.newPasswordEditText.text.toString().trim()
-        val currentPassword = binding.passwordEditText.text.toString().trim()
-        val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
-        val photo = ImageUtils.bitmapToBase64(binding.profileImageView.drawToBitmap())
+        val NOMBRE_USUARIO = binding.nameEditText.text.toString().trim()
+        val APELLIDO_USUARIO = binding.lastNameEditText.text.toString().trim()
+        val NUEVA_CONTRASEÑA_USUARIO = binding.newPasswordEditText.text.toString().trim()
+        val CONTRASEÑA_USUARIO = binding.passwordEditText.text.toString().trim()
+        val CONFIRMAR_CONTRASEÑA_USUARIO = binding.confirmPasswordEditText.text.toString().trim()
+        val FOTO_PERFIL_USUARIO = ImageUtils.bitmapToBase64(binding.profileImageView.drawToBitmap())
 
         when {
-            name.isBlank() || lastname.isBlank() || currentPassword.isBlank() || confirmPassword.isBlank() -> {
+            NOMBRE_USUARIO.isBlank() || APELLIDO_USUARIO.isBlank() || CONTRASEÑA_USUARIO.isBlank() || CONFIRMAR_CONTRASEÑA_USUARIO.isBlank() -> {
                 SessionManager.showToast(requireContext(), R.string.fillFields)
             }
 
-            currentPassword != confirmPassword -> {
+            CONTRASEÑA_USUARIO != CONFIRMAR_CONTRASEÑA_USUARIO -> {
                 SessionManager.showToast(requireContext(), R.string.differentPasswords)
             }
 
-            currentPassword != user["password"] -> {
+            CONTRASEÑA_USUARIO != user["CONTRASEÑA_USUARIO"] -> {
                 SessionManager.showToast(requireContext(), R.string.verifyPassword)
             }
 
             else -> {
                 lifecycleScope.launch {
-                    if (newPassword.isBlank()) {
+                    if (NUEVA_CONTRASEÑA_USUARIO.isBlank()) {
                         viewModel.updateUser(
-                            user["email"]!!, name, lastname, user["password"]!!, photo
+                            user["CORREO_USUARIO"]!!, NOMBRE_USUARIO, APELLIDO_USUARIO, user["CONTRASEÑA_USUARIO"]!!, FOTO_PERFIL_USUARIO
                         )
                         SessionManager.setUserLoggedIn(
                             requireContext(),
                             true,
-                            user["email"]!!,
-                            name,
-                            lastname,
-                            user["password"]!!,
-                            photo
+                            user["CORREO_USUARIO"]!!,
+                            NOMBRE_USUARIO,
+                            APELLIDO_USUARIO,
+                            user["CONTRASEÑA_USUARIO"]!!,
+                            FOTO_PERFIL_USUARIO
                         )
-                    } else if (SessionManager.isValidPassword(newPassword)) {
+                    } else if (SessionManager.isValidPassword(NUEVA_CONTRASEÑA_USUARIO)) {
                         viewModel.updateUser(
-                            user["email"]!!, name, lastname, newPassword, photo
+                            user["CORREO_USUARIO"]!!, NOMBRE_USUARIO, APELLIDO_USUARIO, NUEVA_CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO
                         )
                         SessionManager.setUserLoggedIn(
                             requireContext(),
                             true,
-                            user["email"]!!,
-                            name,
-                            lastname,
-                            newPassword,
-                            photo
+                            user["CORREO_USUARIO"]!!,
+                            NOMBRE_USUARIO,
+                            APELLIDO_USUARIO,
+                            NUEVA_CONTRASEÑA_USUARIO,
+                            FOTO_PERFIL_USUARIO
                         )
                     } else {
                         SessionManager.showToast(requireContext(), R.string.checkPassword)

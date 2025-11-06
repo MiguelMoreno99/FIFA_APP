@@ -14,16 +14,16 @@ class LoginViewModel @Inject constructor(
 
     val loginSuccess = MutableLiveData<Boolean>()
 
-    suspend fun validateUser(email: String, password: String) {
-        val response = useCases.getUser(email)
-        if (response.isNotEmpty() && response[0].password == password) {
+    suspend fun validateUser(CORREO_USUARIO: String, CONTRASEÑA_USUARIO: String) {
+        val response = useCases.getUser(CORREO_USUARIO)
+        if (response.isNotEmpty() && response[0].CONTRASEÑA_USUARIO == CONTRASEÑA_USUARIO) {
             loginSuccess.postValue(true)
         } else {
             loginSuccess.postValue(false)
         }
     }
 
-    suspend fun getUserData(email: String): UserModel {
-        return useCases.getUser(email)[0]
+    suspend fun getUserData(CORREO_USUARIO: String): UserModel {
+        return useCases.getUser(CORREO_USUARIO)[0]
     }
 }

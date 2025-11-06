@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RoomModule {
 
-    private const val DATABASE_NAME = "ProjectDatabase"
+    private const val DATABASE_NAME = "DB_FIFAAPP"
 
     @Singleton
     @Provides

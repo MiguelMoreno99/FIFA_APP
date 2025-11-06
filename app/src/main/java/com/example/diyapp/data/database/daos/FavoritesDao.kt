@@ -14,7 +14,7 @@ interface FavoriteDao {
     @Query("""
         SELECT 
             Pub.idPublication, 
-            Pub.email, 
+            Pub.CORREO_USUARIO, 
             Pub.theme, 
             Pub.photoMain, 
             Pub.description,
@@ -26,11 +26,11 @@ interface FavoriteDao {
         FROM 
             CreationTable AS Pub
         JOIN 
-            userTable ON userTable.email = Pub.email
+            userTable ON userTable.CORREO_USUARIO = Pub.CORREO_USUARIO
         JOIN 
             favoritesTable ON favoritesTable.idPublication = Pub.idPublication
         WHERE 
-            favoritesTable.email = :email
+            favoritesTable.CORREO_USUARIO = :CORREO_USUARIO
     """)
-    suspend fun getFavoritesByUser(email: String): List<FavoriteEntity>
+    suspend fun getFavoritesByUser(CORREO_USUARIO: String): List<FavoriteEntity>
 }

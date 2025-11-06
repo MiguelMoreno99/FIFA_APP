@@ -8,11 +8,11 @@ data class ServerResponse(
 
 data class IdResponse(
     @SerializedName("id_publicacion") val id: Int,
-    @SerializedName("correo") val email: String
+    @SerializedName("CORREO_USUARIO") val email: String
 )
 
 data class UserEmail(
-    @SerializedName("correo") val email: String
+    @SerializedName("CORREO_USUARIO") val email: String
 )
 
 data class UserNewPublication(

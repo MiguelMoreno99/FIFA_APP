@@ -24,14 +24,14 @@ class UseCases @Inject constructor(
         }
     }
 
-    suspend fun getUser(email: String): List<UserModel> {
-        val users = repository.getUserFromApi(email)
+    suspend fun getUser(CORREO_USUARIO: String): List<UserModel> {
+        val users = repository.getUserFromApi(CORREO_USUARIO)
         return if (users.isNotEmpty()) {
             repository.clearUsers()
             repository.insertUsers(users.map { it.toDatabase() })
             users
         } else {
-            repository.getUserFromDataBase(email)
+            repository.getUserFromDataBase(CORREO_USUARIO)
         }
     }
 
@@ -44,23 +44,23 @@ class UseCases @Inject constructor(
     }
 
     suspend fun editUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): List<User> {
-        return repository.editUser(email, name, lastname, password, userPhoto)
+        return repository.editUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
     }
 
     suspend fun registerUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        userPhoto: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ): ServerResponse {
-        return repository.registerUser(email, name, lastname, password, userPhoto)
+        return repository.registerUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
     }
 
     suspend fun createPublication(

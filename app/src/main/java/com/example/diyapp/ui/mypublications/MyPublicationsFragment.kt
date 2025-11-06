@@ -22,7 +22,7 @@ class MyPublicationsFragment : Fragment() {
 
     private lateinit var adapter: FeedCreationsAdapter
     private val viewModel: MyPublicationsViewModel by viewModels()
-    private var email: String = ""
+    private var CORREO_USUARIO: String = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,7 +39,7 @@ class MyPublicationsFragment : Fragment() {
         setupSearchView()
 
         val sharedPref = SessionManager.getUserInfo(requireContext())
-        email = sharedPref["email"] ?: ""
+        CORREO_USUARIO = sharedPref["CORREO_USUARIO"] ?: ""
 
         viewModel.feedCreations.observe(viewLifecycleOwner) { creations ->
             adapter.updateData(creations)
@@ -53,14 +53,14 @@ class MyPublicationsFragment : Fragment() {
         }
 
         lifecycleScope.launch {
-            viewModel.loadFeedCreations(email)
+            viewModel.loadFeedCreations(CORREO_USUARIO)
         }
     }
 
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch {
-            viewModel.loadFeedCreations(email)
+            viewModel.loadFeedCreations(CORREO_USUARIO)
         }
     }
 

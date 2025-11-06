@@ -29,7 +29,7 @@ class CreationDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCreationDetailBinding
     private lateinit var args: CreationDetailActivityArgs
     private val viewModel: CreationDetailViewModel by viewModels()
-    private lateinit var email: String
+    private lateinit var CORREO_USUARIO: String
     private val imageUris = mutableListOf<Uri>()
     private lateinit var recyclerViewAdapter: MultipleImagesAdapter
 
@@ -48,7 +48,7 @@ class CreationDetailActivity : AppCompatActivity() {
         args = CreationDetailActivityArgs.fromBundle(intent.extras!!)
         val item = args.feedCreationItem
 
-        email = SessionManager.getUserInfo(this)["email"]!!
+        CORREO_USUARIO = SessionManager.getUserInfo(this)["CORREO_USUARIO"]!!
 
         setUpCategorySpinner(item.theme)
         binding.apply {
@@ -72,7 +72,7 @@ class CreationDetailActivity : AppCompatActivity() {
             setUpImagePickers()
             buttonEditPublication.setOnClickListener { validateFields(item) }
             buttonDeletePublication.setOnClickListener {
-                viewModel.deletePublication(item.idPublication, email)
+                viewModel.deletePublication(item.idPublication, CORREO_USUARIO)
             }
         }
     }
@@ -138,7 +138,7 @@ class CreationDetailActivity : AppCompatActivity() {
         } else {
             viewModel.editPublication(
                 item.idPublication,
-                email,
+                CORREO_USUARIO,
                 title,
                 category,
                 mainPhoto,

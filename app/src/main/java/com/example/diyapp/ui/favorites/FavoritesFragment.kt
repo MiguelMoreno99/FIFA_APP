@@ -23,7 +23,7 @@ class FavoritesFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: FeedFavoritesAdapter
     private val viewModel: FavoriteViewModel by viewModels()
-    private lateinit var email: String
+    private lateinit var CORREO_USUARIO: String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -36,19 +36,19 @@ class FavoritesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        email = SessionManager.getUserInfo(requireContext())["email"]!!
+        CORREO_USUARIO = SessionManager.getUserInfo(requireContext())["CORREO_USUARIO"]!!
 
         setupRecyclerView()
         setupObservers()
         setupSearchView()
 
-        viewModel.loadFavorites(email)
+        viewModel.loadFavorites(CORREO_USUARIO)
     }
 
     override fun onResume() {
         super.onResume()
         lifecycleScope.launch {
-            viewModel.loadFavorites(email)
+            viewModel.loadFavorites(CORREO_USUARIO)
         }
     }
 

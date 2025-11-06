@@ -14,7 +14,7 @@ import com.example.diyapp.data.model.CreationModel
 data class CreationEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "idPublication") val idPublication: Int = 0,
-    @ColumnInfo(name = "email") val email: String = "",
+    @ColumnInfo(name = "CORREO_USUARIO") val CORREO_USUARIO: String = "",
     @ColumnInfo(name = "title") val title: String = "",
     @ColumnInfo(name = "theme") val theme: String = "",
     @ColumnInfo(name = "photoMain") val photoMain: String = "",
@@ -28,7 +28,7 @@ data class CreationEntity(
 
 fun CreationModel.toDatabase() = CreationEntity(
     idPublication,
-    email,
+    CORREO_USUARIO,
     title,
     theme,
     photoMain,

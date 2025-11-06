@@ -15,8 +15,8 @@ interface UserDao {
     @Update
     suspend fun updateUser(users: List<UserEntity>)
 
-    @Query(value = "SELECT * FROM userTable WHERE email = :email")
-    suspend fun getUserInfo(email: String): List<UserEntity>
+    @Query(value = "SELECT * FROM userTable WHERE CORREO_USUARIO = :CORREO_USUARIO")
+    suspend fun getUserInfo(CORREO_USUARIO: String): List<UserEntity>
 
     @Query(value = "DELETE FROM userTable")
     suspend fun deleteAllUsers()

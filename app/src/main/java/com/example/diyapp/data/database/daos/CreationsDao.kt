@@ -22,14 +22,14 @@ interface CreationsDao {
     @Query("SELECT * FROM CreationTable WHERE state = 1 ORDER BY theme DESC")
     suspend fun getAllCompletedPublicationsDesc(): List<CreationEntity>
 
-    @Query("SELECT * FROM CreationTable WHERE state = 1 AND email= :email")
-    suspend fun getAllCompletedPublicationsByUser(email: String): List<CreationEntity>
+    @Query("SELECT * FROM CreationTable WHERE state = 1 AND CORREO_USUARIO= :CORREO_USUARIO")
+    suspend fun getAllCompletedPublicationsByUser(CORREO_USUARIO: String): List<CreationEntity>
 
     @Query("SELECT * FROM CreationTable WHERE idPublication = :id")
     suspend fun getPublicationById(id: Int): CreationEntity
 
-    @Query("SELECT * FROM CreationTable WHERE state = 0 AND email= :email")
-    suspend fun getDraftPublicationsByUser(email: String): List<CreationEntity>
+    @Query("SELECT * FROM CreationTable WHERE state = 0 AND CORREO_USUARIO= :CORREO_USUARIO")
+    suspend fun getDraftPublicationsByUser(CORREO_USUARIO: String): List<CreationEntity>
 
     @Update
     suspend fun updatePublication(publication: CreationEntity)

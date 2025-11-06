@@ -11,6 +11,18 @@ import retrofit2.http.POST
 
 interface APIService {
 
+    //END POINTS USER
+    @POST("user/listUser/")
+    suspend fun listUser(@Body userEmail: UserEmail): Response<List<User>> //
+
+    @POST("user/insert/")
+    suspend fun insertUser(@Body user: User): Response<ServerResponse> //
+
+    @POST("user/modify/")
+    suspend fun modifyUser(@Body user: User): Response<List<User>> //
+
+    ////////
+
     @GET("publicacion/list/")
     suspend fun getFeedExplore(): Response<List<FeedExplore>> //
 
@@ -20,20 +32,11 @@ interface APIService {
     @POST("favorito/list/")
     suspend fun getFeedFavorites(@Body userEmail: UserEmail): Response<List<FeedFavorites>> //
 
-    @POST("user/listUser/")
-    suspend fun listUser(@Body userEmail: UserEmail): Response<List<User>> //
-
     @POST("publicacion/modify/")
     suspend fun editCreation(@Body creation: UserEditPublication): Response<ServerResponse> //
 
     @POST("publicacion/insertPublicacion/")
     suspend fun createPublication(@Body creation: UserNewPublication): Response<ServerResponse> //
-
-    @POST("user/modify/")
-    suspend fun modifyUser(@Body user: User): Response<List<User>> //
-
-    @POST("user/insert/")
-    suspend fun insertUser(@Body user: User): Response<ServerResponse> //
 
     @POST("publicacion/eliminar/")
     suspend fun deleteCreation(@Body idPublication: IdResponse): Response<ServerResponse> //

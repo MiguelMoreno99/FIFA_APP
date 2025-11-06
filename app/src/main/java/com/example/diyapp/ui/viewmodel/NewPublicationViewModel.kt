@@ -12,12 +12,12 @@ class NewPublicationViewModel @Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
-    var email: String = ""
+    var CORREO_USUARIO: String = ""
     val isPublicationCreated = MutableLiveData<Boolean>()
     val errorMessage = MutableLiveData<Int?>()
 
     fun setUserEmail(userEmail: String) {
-        email = userEmail
+        CORREO_USUARIO = userEmail
     }
 
     suspend fun createPublication(
@@ -30,7 +30,7 @@ class NewPublicationViewModel @Inject constructor(
     ) {
         if (validateFields(title, description, instructions, mainPhoto, photoProcess)) {
             val response = useCases.createPublication(
-                email,
+                CORREO_USUARIO,
                 title,
                 theme,
                 mainPhoto,

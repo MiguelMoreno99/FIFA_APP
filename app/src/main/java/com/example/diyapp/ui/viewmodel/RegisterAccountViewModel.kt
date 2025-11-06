@@ -15,33 +15,33 @@ class RegisterAccountViewModel @Inject constructor(
     val isUserRegistered = MutableLiveData<Boolean>()
 
     suspend fun registerAccount(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        confirmPassword: String,
-        imageBlob: String?
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        CONFIRMAR_CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String?
     ) {
-        if (validateFields(email, name, lastname, password, confirmPassword, imageBlob)) {
-            checkIfUserExists(email, name, lastname, password, imageBlob!!)
+        if (validateFields(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, CONFIRMAR_CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)) {
+            checkIfUserExists(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO!!)
         }
     }
 
     private fun validateFields(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        confirmPassword: String,
-        imageBlob: String?
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        CONFIRMAR_CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String?
     ): Boolean {
         return when {
-            email.isEmpty() || name.isEmpty() || lastname.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || imageBlob == null -> {
+            CORREO_USUARIO.isEmpty() || NOMBRE_USUARIO.isEmpty() || APELLIDO_USUARIO.isEmpty() || CONTRASEÑA_USUARIO.isEmpty() || CONFIRMAR_CONTRASEÑA_USUARIO.isEmpty() || FOTO_PERFIL_USUARIO == null -> {
                 errorMessage.postValue(R.string.fillFields)
                 false
             }
 
-            password != confirmPassword -> {
+            CONTRASEÑA_USUARIO != CONFIRMAR_CONTRASEÑA_USUARIO -> {
                 errorMessage.postValue(R.string.differentPasswords)
                 false
             }
@@ -51,28 +51,28 @@ class RegisterAccountViewModel @Inject constructor(
     }
 
     private suspend fun checkIfUserExists(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        imageBlob: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ) {
-        val response = useCases.getUser(email)
+        val response = useCases.getUser(CORREO_USUARIO)
         if (response.isEmpty()) {
-            registerUser(email, name, lastname, password, imageBlob)
+            registerUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
         } else {
             errorMessage.postValue(R.string.userAlreadyExists)
         }
     }
 
     private suspend fun registerUser(
-        email: String,
-        name: String,
-        lastname: String,
-        password: String,
-        imageBlob: String
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
     ) {
-        val response = useCases.registerUser(email, name, lastname, password, imageBlob)
+        val response = useCases.registerUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
         if (response.message.isNotEmpty()) {
             isUserRegistered.postValue(true)
         } else {

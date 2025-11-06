@@ -81,11 +81,11 @@ class RegisterAccountActivity : AppCompatActivity() {
 
     private fun setupListeners() {
         binding.registerButton.setOnClickListener {
-            val email = binding.mailEditText.text.toString().trim()
-            val name = binding.nameEditText.text.toString().trim()
-            val lastname = binding.lastNameEditText.text.toString().trim()
-            val password = binding.passwordEditText.text.toString().trim()
-            val confirmPassword = binding.confirmPasswordEditText.text.toString().trim()
+            val CORREO_USUARIO = binding.mailEditText.text.toString().trim()
+            val NOMBRE_USUARIO = binding.nameEditText.text.toString().trim()
+            val APELLIDO_USUARIO = binding.lastNameEditText.text.toString().trim()
+            val CONTRASEÑA_USUARIO = binding.passwordEditText.text.toString().trim()
+            val CONFIRMAR_CONTRASEÑA_USUARIO = binding.confirmPasswordEditText.text.toString().trim()
 
             val imageBlob = if (imageSet) {
                 ImageUtils.bitmapToBase64(binding.profileImageView.drawToBitmap())
@@ -94,11 +94,11 @@ class RegisterAccountActivity : AppCompatActivity() {
             }
             lifecycleScope.launch {
                 viewModel.registerAccount(
-                    email,
-                    name,
-                    lastname,
-                    password,
-                    confirmPassword,
+                    CORREO_USUARIO,
+                    NOMBRE_USUARIO,
+                    APELLIDO_USUARIO,
+                    CONTRASEÑA_USUARIO,
+                    CONFIRMAR_CONTRASEÑA_USUARIO,
                     imageBlob
                 )
             }

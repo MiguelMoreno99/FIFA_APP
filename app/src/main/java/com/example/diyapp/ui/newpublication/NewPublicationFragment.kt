@@ -60,7 +60,7 @@ class NewPublicationFragment : Fragment() {
         observeViewModel()
 
         val sharedPref = SessionManager.getUserInfo(requireContext())
-        viewModel.setUserEmail(sharedPref["email"] ?: "")
+        viewModel.setUserEmail(sharedPref["CORREO_USUARIO"] ?: "")
     }
 
     private fun setupSpinner() {
