@@ -2,10 +2,11 @@ package com.example.diyapp.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import java.util.UUID
 
 @Entity(
     tableName = "favoritesTable",
-    primaryKeys = ["CORREO_USUARIO", "idPublication"],
+    primaryKeys = ["CORREO_USUARIO", "UUID_JUGADOR"],
     foreignKeys = [
         ForeignKey(
             entity = UserEntity::class,
@@ -15,13 +16,13 @@ import androidx.room.ForeignKey
         ),
         ForeignKey(
             entity = CreationEntity::class,
-            parentColumns = ["idPublication"],
-            childColumns = ["idPublication"],
+            parentColumns = ["UUID_JUGADOR"],
+            childColumns = ["UUID_JUGADOR"],
             onDelete = ForeignKey.CASCADE
         )
     ]
 )
 data class FavoriteEntity(
     val CORREO_USUARIO: String,
-    val idPublication: Int
+    val UUID_JUGADOR: UUID
 )

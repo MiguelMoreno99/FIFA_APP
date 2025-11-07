@@ -34,7 +34,7 @@
             android:name=".ui.detail.PublicationDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.explore.MainActivity"
+            android:name=".ui.album.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

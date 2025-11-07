@@ -13,22 +13,28 @@ interface FavoriteDao {
 
     @Query("""
         SELECT 
-            Pub.idPublication, 
-            Pub.CORREO_USUARIO, 
-            Pub.theme, 
-            Pub.photoMain, 
-            Pub.description,
-            Pub.numLikes, 
-            Pub.state, 
-            Pub.dateCreation, 
-            Pub.instructions, 
-            Pub.photoProcess
+            Pub.UUID_JUGADOR, 
+            Pub.IMG_PAIS_JUGADOR, 
+            Pub.NOMBRE_PAIS_JUGADOR, 
+            Pub.NOMBRE_ABREVIADO_PAIS_JUGADOR, 
+            Pub.IMG_SELECCION_JUGADOR,
+            Pub.IMG_JUGADOR_JUGADOR, 
+            Pub.NOMBRE_SELECCION_JUGADOR, 
+            Pub.POSICION_JUGADOR, 
+            Pub.POSICION_ABREVIADO_JUGADOR, 
+            Pub.NUMERO_JUGADOR,
+            Pub.NOMBRE_COMPLETO_JUGADOR,
+            Pub.NOMBRE_CORTO_JUGADOR,
+            Pub.NACIMIENTO_CORTO_JUGADOR,
+            Pub.NACIMIENTO_JUGADOR,
+            Pub.ALTURA_JUGADOR,
+            Pub.ACTUAL_CLUB_JUGADOR,
+            Pub.PRIMER_CLUB_JUGADOR,
+            Pub.LOGROS_JUGADOR
         FROM 
             CreationTable AS Pub
         JOIN 
-            userTable ON userTable.CORREO_USUARIO = Pub.CORREO_USUARIO
-        JOIN 
-            favoritesTable ON favoritesTable.idPublication = Pub.idPublication
+            favoritesTable ON favoritesTable.UUID_JUGADOR = Pub.UUID_JUGADOR
         WHERE 
             favoritesTable.CORREO_USUARIO = :CORREO_USUARIO
     """)

@@ -1,4 +1,4 @@
-package com.example.diyapp.ui.explore
+package com.example.diyapp.ui.album
 
 import android.os.Bundle
 import androidx.activity.viewModels

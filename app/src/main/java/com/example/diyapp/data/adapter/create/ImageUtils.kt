@@ -6,6 +6,9 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import android.util.Base64
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 
 object ImageUtils {
 
@@ -34,33 +37,33 @@ object ImageUtils {
         }
     }
 
-//    // Save Bitmap to a temporary file
-//    fun saveBitmapToFile(context: Context, bitmap: Bitmap): String {
-//        val file = File(context.cacheDir, "temp_image_${System.currentTimeMillis()}.jpg")
-//        try {
-//            FileOutputStream(file).use { bitmap.compress(Bitmap.CompressFormat.JPEG, 80, it) }
-//        } catch (e: IOException) {
-//            e.printStackTrace()
-//        }
-//        return file.absolutePath
-//    }
-//
-//    // Load Bitmap from a file path
-//    fun loadBitmapFromFile(filePath: String): Bitmap? {
-//        return BitmapFactory.decodeFile(filePath)
-//    }
-//
-//    // Convert a list of Uris to a list of Base64 Strings
-//    fun urisToBase64List(context: Context, uris: List<Uri>): List<String> {
-//        return uris.mapNotNull { uri ->
-//            uriToBitmap(context, uri)?.let { bitmapToBase64(it) }
-//        }
-//    }
-//
-//    // Convert a list of Uris to temporary file paths
-//    fun urisToFilePaths(context: Context, uris: List<Uri>): List<String> {
-//        return uris.mapNotNull { uri ->
-//            uriToBitmap(context, uri)?.let { saveBitmapToFile(context, it) }
-//        }
-//    }
+    // Save Bitmap to a temporary file
+    fun saveBitmapToFile(context: Context, bitmap: Bitmap): String {
+        val file = File(context.cacheDir, "temp_image_${System.currentTimeMillis()}.jpg")
+        try {
+            FileOutputStream(file).use { bitmap.compress(Bitmap.CompressFormat.JPEG, 80, it) }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return file.absolutePath
+    }
+
+    // Load Bitmap from a file path
+    fun loadBitmapFromFile(filePath: String): Bitmap? {
+        return BitmapFactory.decodeFile(filePath)
+    }
+
+    // Convert a list of Uris to a list of Base64 Strings
+    fun urisToBase64List(context: Context, uris: List<Uri>): List<String> {
+        return uris.mapNotNull { uri ->
+            uriToBitmap(context, uri)?.let { bitmapToBase64(it) }
+        }
+    }
+
+    // Convert a list of Uris to temporary file paths
+    fun urisToFilePaths(context: Context, uris: List<Uri>): List<String> {
+        return uris.mapNotNull { uri ->
+            uriToBitmap(context, uri)?.let { saveBitmapToFile(context, it) }
+        }
+    }
 }

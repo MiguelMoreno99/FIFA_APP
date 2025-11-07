@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.diyapp.R
 import com.example.diyapp.data.adapter.create.ImageUtils
 
@@ -20,21 +21,21 @@ class FeedCreationsAdapter(
 
     inner class FeedCreationsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val userName: TextView = view.findViewById(R.id.tvUserName)
-        private val category: TextView = view.findViewById(R.id.tvCategory)
-        private val title: TextView = view.findViewById(R.id.tvTitle)
-        private val likesCountNumber: TextView = view.findViewById(R.id.tvLikesCountNumber)
-        private val creationDate: TextView = view.findViewById(R.id.tvCreationDate)
-        private val photoMain: ImageView = view.findViewById(R.id.ivMainImage)
+        private val urlFlagImage: ImageView = view.findViewById(R.id.ivFlag)
+        private val urlSelectionImage: ImageView = view.findViewById(R.id.ivTeamShield)
+        private val urlPlayerImage: ImageView = view.findViewById(R.id.ivPlayerImage)
+        private val playerPosition: TextView = view.findViewById(R.id.tvPlayerPosition)
+        private val playerNumber: TextView = view.findViewById(R.id.tvJerseyNumber)
+        private val playerName: TextView = view.findViewById(R.id.tvPlayerName)
+        private val playerBirthDate: TextView = view.findViewById(R.id.tvPlayerBirthDate)
         fun render(feedCreationsModel: FeedCreations) {
-            userName.text = feedCreationsModel.email
-            category.text = feedCreationsModel.theme
-            title.text = feedCreationsModel.title
-            likesCountNumber.text = feedCreationsModel.numLikes.toString()
-            creationDate.text = feedCreationsModel.dateCreation
-
-            photoMain.setImageBitmap(ImageUtils.base64ToBitmap(feedCreationsModel.photoMain))
-
+            urlFlagImage.load(feedCreationsModel.IMG_PAIS_JUGADOR)
+            urlSelectionImage.load(feedCreationsModel.IMG_SELECCION_JUGADOR)
+            urlPlayerImage.load(feedCreationsModel.IMG_JUGADOR_JUGADOR)
+            playerPosition.text = feedCreationsModel.POSICION_ABREVIADO_JUGADOR
+            playerNumber.text = feedCreationsModel.NUMERO_JUGADOR.toString()
+            playerName.text = feedCreationsModel.NOMBRE_CORTO_JUGADOR
+            playerBirthDate.text = feedCreationsModel.NACIMIENTO_CORTO_JUGADOR
             itemView.setOnClickListener { onClick(feedCreationsModel) }
         }
     }
@@ -80,7 +81,10 @@ class FeedCreationsAdapter(
             feedCreationsList.toMutableList()
         } else {
             feedCreationsList.filter {
-                it.theme.contains(query, ignoreCase = true)
+                it.NOMBRE_COMPLETO_JUGADOR.contains(query, ignoreCase = true) || it.NOMBRE_PAIS_JUGADOR.contains(
+                    query,
+                    ignoreCase = true
+                )
             }.toMutableList()
         }
         notifyDataSetChanged()

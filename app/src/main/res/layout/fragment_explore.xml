@@ -7,7 +7,7 @@
     android:layout_marginBottom="80dp"
     android:background="@color/white"
     android:padding="16dp"
-    tools:context=".ui.explore.ExploreFragment">
+    tools:context=".ui.album.ExploreFragment">
 
     <ImageView
         android:id="@+id/logoImageView"

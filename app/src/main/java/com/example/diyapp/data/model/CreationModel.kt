@@ -1,49 +1,71 @@
 package com.example.diyapp.data.model
 
 import android.os.Parcelable
-import com.example.diyapp.data.adapter.explore.FeedExplore
+import com.example.diyapp.data.adapter.explore.FeedAlbum
 import com.example.diyapp.data.database.entities.CreationEntity
 import kotlinx.parcelize.Parcelize
+import java.util.UUID
 
 @Parcelize
 data class CreationModel(
-    val idPublication: Int,
-    val CORREO_USUARIO: String,
-    val title: String,
-    val theme: String,
-    val photoMain: String,
-    val description: String,
-    val numLikes: Int,
-    val state: Int,
-    val dateCreation: String,
-    val instructions: String,
-    val photoProcess: List<String>
+    val UUID_JUGADOR: UUID,
+    val IMG_PAIS_JUGADOR: String,
+    val NOMBRE_PAIS_JUGADOR: String,
+    val NOMBRE_ABREVIADO_PAIS_JUGADOR: String,
+    val IMG_SELECCION_JUGADOR: String,
+    val IMG_JUGADOR_JUGADOR: String,
+    val NOMBRE_SELECCION_JUGADOR: String,
+    val POSICION_JUGADOR: String,
+    val POSICION_ABREVIADO_JUGADOR: String,
+    val NUMERO_JUGADOR: Int,
+    val NOMBRE_COMPLETO_JUGADOR: String,
+    val NOMBRE_CORTO_JUGADOR: String,
+    val NACIMIENTO_CORTO_JUGADOR: String,
+    val NACIMIENTO_JUGADOR: String,
+    val ALTURA_JUGADOR: String,
+    val ACTUAL_CLUB_JUGADOR: String,
+    val PRIMER_CLUB_JUGADOR: String,
+    val LOGROS_JUGADOR: String
 ) : Parcelable
 
-fun FeedExplore.toDomain() = CreationModel(
-    idPublication,
-    CORREO_USUARIO,
-    title,
-    theme,
-    photoMain,
-    description,
-    numLikes,
-    state,
-    dateCreation,
-    instructions,
-    photoProcess
+fun FeedAlbum.toDomain() = CreationModel(
+    UUID_JUGADOR,
+    IMG_PAIS_JUGADOR,
+    NOMBRE_PAIS_JUGADOR,
+    NOMBRE_ABREVIADO_PAIS_JUGADOR,
+    IMG_SELECCION_JUGADOR,
+    IMG_JUGADOR_JUGADOR,
+    NOMBRE_SELECCION_JUGADOR,
+    POSICION_JUGADOR,
+    POSICION_ABREVIADO_JUGADOR,
+    NUMERO_JUGADOR,
+    NOMBRE_COMPLETO_JUGADOR,
+    NOMBRE_CORTO_JUGADOR,
+    NACIMIENTO_CORTO_JUGADOR,
+    NACIMIENTO_JUGADOR,
+    ALTURA_JUGADOR,
+    ACTUAL_CLUB_JUGADOR,
+    PRIMER_CLUB_JUGADOR,
+    LOGROS_JUGADOR
 )
 
 fun CreationEntity.toDomain() = CreationModel(
-    idPublication,
-    CORREO_USUARIO,
-    title,
-    theme,
-    photoMain,
-    description,
-    numLikes,
-    state,
-    dateCreation,
-    instructions,
-    photoProcess.toMutableList()
+    UUID_JUGADOR,
+    IMG_PAIS_JUGADOR,
+    NOMBRE_PAIS_JUGADOR,
+    NOMBRE_ABREVIADO_PAIS_JUGADOR,
+    IMG_SELECCION_JUGADOR,
+    IMG_JUGADOR_JUGADOR,
+    NOMBRE_SELECCION_JUGADOR,
+    POSICION_JUGADOR,
+    POSICION_ABREVIADO_JUGADOR,
+    NUMERO_JUGADOR,
+    NOMBRE_COMPLETO_JUGADOR,
+    NOMBRE_CORTO_JUGADOR,
+    NACIMIENTO_CORTO_JUGADOR,
+    NACIMIENTO_JUGADOR,
+    ALTURA_JUGADOR,
+    ACTUAL_CLUB_JUGADOR,
+    PRIMER_CLUB_JUGADOR,
+    LOGROS_JUGADOR
 )

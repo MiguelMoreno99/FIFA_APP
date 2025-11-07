@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.diyapp.R
 import com.example.diyapp.data.adapter.create.ImageUtils
 import com.example.diyapp.data.model.CreationModel
+import coil.load
 
 class FeedExploreAdapter(
     private var feedExplorerList: List<CreationModel>,
@@ -21,23 +22,23 @@ class FeedExploreAdapter(
 
     inner class FeedExploreViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-//        private val userName: TextView = view.findViewById(R.id.tvUserName)
-//        private val category: TextView = view.findViewById(R.id.tvCategory)
-//        private val title: TextView = view.findViewById(R.id.tvTitle)
-//        private val likesCountNumber: TextView = view.findViewById(R.id.tvLikesCountNumber)
-//        private val creationDate: TextView = view.findViewById(R.id.tvCreationDate)
-//        private val photoMain: ImageView = view.findViewById(R.id.ivMainImage)
-//        fun render(feedExploreModel: CreationModel) {
-//            userName.text = feedExploreModel.email
-//            category.text = feedExploreModel.theme
-//            title.text = feedExploreModel.title
-//            likesCountNumber.text = feedExploreModel.numLikes.toString()
-//            creationDate.text = feedExploreModel.dateCreation
-//
-//            photoMain.setImageBitmap(ImageUtils.base64ToBitmap(feedExploreModel.photoMain))
-//
-//            itemView.setOnClickListener { onClick(feedExploreModel) }
-//        }
+        private val urlFlagImage: ImageView = view.findViewById(R.id.ivFlag)
+        private val urlSelectionImage: ImageView = view.findViewById(R.id.ivTeamShield)
+        private val urlPlayerImage: ImageView = view.findViewById(R.id.ivPlayerImage)
+        private val playerPosition: TextView = view.findViewById(R.id.tvPlayerPosition)
+        private val playerNumber: TextView = view.findViewById(R.id.tvJerseyNumber)
+        private val playerName: TextView = view.findViewById(R.id.tvPlayerName)
+        private val playerBirthDate: TextView = view.findViewById(R.id.tvPlayerBirthDate)
+        fun render(feedExploreModel: CreationModel) {
+            urlFlagImage.load(feedExploreModel.IMG_PAIS_JUGADOR)
+            urlSelectionImage.load(feedExploreModel.IMG_SELECCION_JUGADOR)
+            urlPlayerImage.load(feedExploreModel.IMG_JUGADOR_JUGADOR)
+            playerPosition.text = feedExploreModel.POSICION_ABREVIADO_JUGADOR
+            playerNumber.text = feedExploreModel.NUMERO_JUGADOR.toString()
+            playerName.text = feedExploreModel.NOMBRE_CORTO_JUGADOR
+            playerBirthDate.text = feedExploreModel.NACIMIENTO_CORTO_JUGADOR
+            itemView.setOnClickListener { onClick(feedExploreModel) }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedExploreViewHolder {
@@ -81,7 +82,7 @@ class FeedExploreAdapter(
             feedExplorerList.toMutableList()
         } else {
             feedExplorerList.filter {
-                it.theme.contains(query, ignoreCase = true) || it.title.contains(
+                it.NOMBRE_COMPLETO_JUGADOR.contains(query, ignoreCase = true) || it.NOMBRE_PAIS_JUGADOR.contains(
                     query,
                     ignoreCase = true
                 )

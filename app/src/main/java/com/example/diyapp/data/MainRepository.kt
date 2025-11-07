@@ -2,7 +2,7 @@ package com.example.diyapp.data
 
 import com.example.diyapp.data.adapter.creations.FeedCreations
 import com.example.diyapp.data.adapter.creations.FeedCreationsProvider
-import com.example.diyapp.data.adapter.explore.FeedExplore
+import com.example.diyapp.data.adapter.explore.FeedAlbum
 import com.example.diyapp.data.adapter.favorites.FeedFavorites
 import com.example.diyapp.data.adapter.favorites.FeedFavoritesProvider
 import com.example.diyapp.data.adapter.user.User
@@ -26,7 +26,7 @@ class MainRepository @Inject constructor(
 ) {
 
     suspend fun getFeedExploreFromApi(): List<CreationModel> {
-        val response: List<FeedExplore> = api.getFeedExplore()
+        val response: List<FeedAlbum> = api.getFeedExplore()
         return response.map { it.toDomain() }
     }
 

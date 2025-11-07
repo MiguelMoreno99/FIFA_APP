@@ -39,7 +39,7 @@
     </fragment>
     <fragment
         android:id="@+id/exploreFragment"
-        android:name="com.example.diyapp.ui.explore.ExploreFragment"
+        android:name="com.example.diyapp.ui.album.ExploreFragment"
         android:label="fragment_explore"
         tools:layout="@layout/fragment_explore">
         <action
