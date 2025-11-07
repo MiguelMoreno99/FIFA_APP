@@ -54,6 +54,9 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // To load images from URLs
+    implementation(libs.coil)
+
     //Zxing in libs.versions.toml
     implementation(libs.zxing.android.embedded)
 

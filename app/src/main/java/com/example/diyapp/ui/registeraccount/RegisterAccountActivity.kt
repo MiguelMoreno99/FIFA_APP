@@ -1,8 +1,10 @@
 package com.example.diyapp.ui.registeraccount
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Base64
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -19,6 +21,7 @@ import com.example.diyapp.ui.viewmodel.RegisterAccountViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
+import java.io.IOException
 
 @AndroidEntryPoint
 class RegisterAccountActivity : AppCompatActivity() {
@@ -26,6 +29,7 @@ class RegisterAccountActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterAccountBinding
     private var imageSet = false
     private val viewModel: RegisterAccountViewModel by viewModels()
+    private var profileImageUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +57,7 @@ class RegisterAccountActivity : AppCompatActivity() {
                     if (uri != null) {
                         binding.profileImageView.setImageURI(uri)
                         imageSet = true
+                        profileImageUri = uri
                     } else {
                         SessionManager.showToast(this, R.string.error2)
                     }
@@ -86,12 +91,8 @@ class RegisterAccountActivity : AppCompatActivity() {
             val APELLIDO_USUARIO = binding.lastNameEditText.text.toString().trim()
             val CONTRASEÑA_USUARIO = binding.passwordEditText.text.toString().trim()
             val CONFIRMAR_CONTRASEÑA_USUARIO = binding.confirmPasswordEditText.text.toString().trim()
+            val imageBytes = Base64.encodeToString(getBytesFromUri(profileImageUri!!), Base64.DEFAULT)
 
-            val imageBlob = if (imageSet) {
-                ImageUtils.bitmapToBase64(binding.profileImageView.drawToBitmap())
-            } else {
-                null
-            }
             lifecycleScope.launch {
                 viewModel.registerAccount(
                     CORREO_USUARIO,
@@ -99,7 +100,7 @@ class RegisterAccountActivity : AppCompatActivity() {
                     APELLIDO_USUARIO,
                     CONTRASEÑA_USUARIO,
                     CONFIRMAR_CONTRASEÑA_USUARIO,
-                    imageBlob
+                    imageBytes
                 )
             }
         }
@@ -119,4 +120,14 @@ class RegisterAccountActivity : AppCompatActivity() {
             }
         }
     }
+    private fun getBytesFromUri(uri: Uri): ByteArray? {
+        return try {
+            val inputStream = this.contentResolver.openInputStream(uri)
+            inputStream?.readBytes()
+        } catch (e: IOException) {
+            e.printStackTrace()
+            null
+        }
+    }
 }
+

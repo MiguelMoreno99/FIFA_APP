@@ -3,6 +3,7 @@ package com.example.diyapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.diyapp.R
+import com.example.diyapp.data.SessionManager
 import com.example.diyapp.domain.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -43,6 +44,16 @@ class RegisterAccountViewModel @Inject constructor(
 
             CONTRASEÑA_USUARIO != CONFIRMAR_CONTRASEÑA_USUARIO -> {
                 errorMessage.postValue(R.string.differentPasswords)
+                false
+            }
+
+            !SessionManager.isValidEmail(CORREO_USUARIO) ->{
+                errorMessage.postValue(R.string.checkEmail)
+                false
+            }
+
+            !SessionManager.isValidPassword(CONTRASEÑA_USUARIO) ->{
+                errorMessage.postValue(R.string.checkPassword)
                 false
             }
 

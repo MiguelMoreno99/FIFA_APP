@@ -69,7 +69,7 @@ object SessionManager {
         return true
     }
 
-    private fun isValidEmail(CORREO_USUARIO: String): Boolean {
+    fun isValidEmail(CORREO_USUARIO: String): Boolean {
         val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         return CORREO_USUARIO.matches(emailPattern.toRegex())
     }
