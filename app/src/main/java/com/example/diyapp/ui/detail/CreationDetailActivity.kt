@@ -45,36 +45,36 @@ class CreationDetailActivity : AppCompatActivity() {
 
     @SuppressLint("NotifyDataSetChanged")
     private fun loadPublicationInfo() {
-        args = CreationDetailActivityArgs.fromBundle(intent.extras!!)
-        val item = args.feedCreationItem
-
-        CORREO_USUARIO = SessionManager.getUserInfo(this)["CORREO_USUARIO"]!!
-
-        setUpCategorySpinner(item.theme)
-        binding.apply {
-            editTextTitle.setText(item.title)
-            editTextDescription.setText(item.description)
-            editTextInstructions.setText(item.instructions)
-            imageViewMain.setImageBitmap(ImageUtils.base64ToBitmap(item.photoMain))
-
-            recyclerViewAdapter = MultipleImagesAdapter(imageUris)
-            recyclerViewInstructionPhotos.apply {
-                adapter = recyclerViewAdapter
-                layoutManager = LinearLayoutManager(
-                    this@CreationDetailActivity,
-                    LinearLayoutManager.HORIZONTAL,
-                    false
-                )
-            }
-
-            recyclerViewInstructionPhotos.adapter = InstructionsAdapter(item.photoProcess)
-
-            setUpImagePickers()
-            buttonEditPublication.setOnClickListener { validateFields(item) }
-            buttonDeletePublication.setOnClickListener {
-                viewModel.deletePublication(item.idPublication, CORREO_USUARIO)
-            }
-        }
+//        args = CreationDetailActivityArgs.fromBundle(intent.extras!!)
+//        val item = args.feedCreationItem
+//
+//        CORREO_USUARIO = SessionManager.getUserInfo(this)["CORREO_USUARIO"]!!
+//
+//        setUpCategorySpinner(item.theme)
+//        binding.apply {
+//            editTextTitle.setText(item.title)
+//            editTextDescription.setText(item.description)
+//            editTextInstructions.setText(item.instructions)
+//            imageViewMain.setImageBitmap(ImageUtils.base64ToBitmap(item.photoMain))
+//
+//            recyclerViewAdapter = MultipleImagesAdapter(imageUris)
+//            recyclerViewInstructionPhotos.apply {
+//                adapter = recyclerViewAdapter
+//                layoutManager = LinearLayoutManager(
+//                    this@CreationDetailActivity,
+//                    LinearLayoutManager.HORIZONTAL,
+//                    false
+//                )
+//            }
+//
+//            recyclerViewInstructionPhotos.adapter = InstructionsAdapter(item.photoProcess)
+//
+//            setUpImagePickers()
+//            buttonEditPublication.setOnClickListener { validateFields(item) }
+//            buttonDeletePublication.setOnClickListener {
+//                viewModel.deletePublication(item.idPublication, CORREO_USUARIO)
+//            }
+//        }
     }
 
     private fun setUpCategorySpinner(theme: String) {
@@ -136,16 +136,16 @@ class CreationDetailActivity : AppCompatActivity() {
         if (title.isBlank() || description.isBlank() || instructions.isBlank()) {
             SessionManager.showToast(this, R.string.fillFields)
         } else {
-            viewModel.editPublication(
-                item.idPublication,
-                CORREO_USUARIO,
-                title,
-                category,
-                mainPhoto,
-                description,
-                instructions,
-                photos
-            )
+//            viewModel.editPublication(
+//                item.idPublication,
+//                CORREO_USUARIO,
+//                title,
+//                category,
+//                mainPhoto,
+//                description,
+//                instructions,
+//                photos
+//            )
         }
     }
 

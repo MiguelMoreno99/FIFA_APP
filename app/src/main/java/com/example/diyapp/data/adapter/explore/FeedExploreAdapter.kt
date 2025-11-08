@@ -73,7 +73,7 @@ class FeedExploreAdapter(
 
     override fun onBindViewHolder(holder: FeedExploreViewHolder, position: Int) {
         val item = filteredList[position]
-//        holder.render(item)
+        holder.render(item)
     }
 
     @SuppressLint("NotifyDataSetChanged")

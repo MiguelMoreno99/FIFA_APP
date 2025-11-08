@@ -2,56 +2,17 @@ package com.example.diyapp.domain
 
 import android.util.Log
 import com.example.diyapp.data.adapter.creations.FeedCreations
-import com.example.diyapp.data.adapter.explore.FeedExplore
+import com.example.diyapp.data.adapter.explore.FeedAlbum
 import com.example.diyapp.data.adapter.favorites.FeedFavorites
 import com.example.diyapp.data.adapter.user.User
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import retrofit2.Response
+import java.util.UUID
 import javax.inject.Inject
 
 class RetrofitManager @Inject constructor(private val apiService: APIService) {
-
-    suspend fun getFeedExplore(): List<FeedExplore> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val call = apiService.getFeedExplore()
-                val responseBody = call.body()
-                Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: emptyList()
-            } catch (e: Exception) {
-                emptyList()
-            }
-        }
-    }
-
-    suspend fun getFeedFavorite(email: String): List<FeedFavorites> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val user = UserEmail(email)
-                val call = apiService.getFeedFavorites(user)
-                val responseBody = call.body()
-                Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: emptyList()
-            } catch (e: Exception) {
-                emptyList()
-            }
-        }
-    }
-
-    suspend fun getFeedCreations(email: String): List<FeedCreations> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val user = UserEmail(email)
-                val call = apiService.getFeedCreations(user)
-                val responseBody = call.body()
-                Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: emptyList()
-            } catch (e: Exception) {
-                emptyList()
-            }
-        }
-    }
-
+    //USER
     suspend fun getUser(CORREO_USUARIO: String): List<User> {
         return withContext(Dispatchers.IO) {
             try {
@@ -65,27 +26,6 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
             }
         }
     }
-
-    suspend fun editUser(
-        CORREO_USUARIO: String,
-        NOMBRE_USUARIO: String,
-        APELLIDO_USUARIO: String,
-        CONTRASEÑA_USUARIO: String,
-        FOTO_PERFIL_USUARIO: String
-    ): List<User> {
-        return withContext(Dispatchers.IO) {
-            try {
-                val user = User(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
-                val call = apiService.modifyUser(user)
-                val responseBody = call.body()
-                Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: emptyList()
-            } catch (e: Exception) {
-                emptyList()
-            }
-        }
-    }
-
     suspend fun registerUser(
         CORREO_USUARIO: String,
         NOMBRE_USUARIO: String,
@@ -112,29 +52,50 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
             }
         }
     }
+    suspend fun editUser(
+        CORREO_USUARIO: String,
+        NOMBRE_USUARIO: String,
+        APELLIDO_USUARIO: String,
+        CONTRASEÑA_USUARIO: String,
+        FOTO_PERFIL_USUARIO: String
+    ): List<User> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val user = User(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
+                val call = apiService.modifyUser(user)
+                val responseBody = call.body()
+                Log.d("API Response", "Server Response: $responseBody")
+                responseBody ?: emptyList()
+            } catch (e: Exception) {
+                emptyList()
+            }
+        }
+    }
 
-    suspend fun createPublication(
-        email: String,
-        title: String,
-        theme: String,
-        photoMain: String,
-        description: String,
-        instructions: String,
-        photoProcess: List<String>
+    //ALBUM
+    suspend fun getAllPlayers(): List<FeedAlbum> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val call = apiService.getAllPlayers()
+                val responseBody = call.body()
+                Log.d("API Response", "Server Response: $responseBody")
+                responseBody ?: emptyList()
+            } catch (e: Exception) {
+                emptyList()
+            }
+        }
+    }
+    suspend fun userRedeemCard(
+        UUID_JUGADOR: UUID,
+        CORREO_USUARIO: String
     ): ServerResponse {
         return withContext(Dispatchers.IO) {
             try {
-                val creation = UserNewPublication(
-                    email,
-                    title,
-                    theme,
-                    photoMain,
-                    instructions,
-                    description,
-                    0,
-                    photoProcess
+                val creation = UserRedeem(
+                    UUID_JUGADOR,
+                    CORREO_USUARIO
                 )
-                val call = apiService.createPublication(creation)
+                val call = apiService.userRedeemCard(creation)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")
                 responseBody ?: ServerResponse("")
@@ -144,56 +105,105 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
         }
     }
 
-    suspend fun editPublication(
-        idPublication: Int,
-        email: String,
-        title: String,
-        theme: String,
-        photoMain: String,
-        description: String,
-        instructions: String,
-        photoProcess: List<String>
-    ): ServerResponse {
+    suspend fun getUserFavorites(CORREO_USUARIO: String): List<FeedFavorites> {
         return withContext(Dispatchers.IO) {
             try {
-                val creation = UserEditPublication(
-                    idPublication,
-                    email,
-                    title,
-                    theme,
-                    photoMain,
-                    description,
-                    instructions,
-                    photoProcess
-                )
-                val call = apiService.editCreation(creation)
+                val user = UserEmail(CORREO_USUARIO)
+                val call = apiService.getUserFavorites(user)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: ServerResponse("")
+                responseBody ?: emptyList()
             } catch (e: Exception) {
-                ServerResponse("")
+                emptyList()
             }
         }
     }
 
-    suspend fun deletePublication(idPublication: Int, email: String): ServerResponse {
-        return withContext(Dispatchers.IO) {
-            try {
-                val idResponse = IdResponse(idPublication, email)
-                val call = apiService.deleteCreation(idResponse)
-                val responseBody = call.body()
-                Log.d("API Response", "Server Response: $responseBody")
-                responseBody ?: ServerResponse("")
-            } catch (e: Exception) {
-                ServerResponse("")
-            }
-        }
-    }
+//    suspend fun getFeedCreations(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
+//        return withContext(Dispatchers.IO) {
+//            try {
+//                val user = UserRedeem(UUID_JUGADOR, CORREO_USUARIO)
+//                val call = apiService.getFeedCreations(user)
+//                val responseBody = call.body()
+//                Log.d("API Response", "Server Response: $responseBody")
+//                responseBody ?: ServerResponse("")
+//            } catch (e: Exception) {
+//                ServerResponse("")
+//            }
+//        }
+//    }
 
-    suspend fun removeFavorite(idPublication: Int, email: String): ServerResponse {
+
+//    suspend fun editPublication(
+//        UUID_JUGADOR: UUID,
+//        IMG_PAIS_JUGADOR: String,
+//        NOMBRE_PAIS_JUGADOR: String,
+//        NOMBRE_ABREVIADO_PAIS_JUGADOR: String,
+//        IMG_SELECCION_JUGADOR: String,
+//        IMG_JUGADOR_JUGADOR: String,
+//        NOMBRE_SELECCION_JUGADOR: String,
+//        POSICION_JUGADOR: String,
+//        POSICION_ABREVIADO_JUGADOR: String,
+//        NUMERO_JUGADOR: Int,
+//        NOMBRE_COMPLETO_JUGADOR: String,
+//        NOMBRE_CORTO_JUGADOR: String,
+//        NACIMIENTO_CORTO_JUGADOR: String,
+//        NACIMIENTO_JUGADOR: String,
+//        ALTURA_JUGADOR: String,
+//        ACTUAL_CLUB_JUGADOR: String,
+//        PRIMER_CLUB_JUGADOR: String,
+//        LOGROS_JUGADOR: String,
+//    ): ServerResponse {
+//        return withContext(Dispatchers.IO) {
+//            try {
+//                val creation = UserEditPublication(
+//                    UUID_JUGADOR,
+//                    IMG_PAIS_JUGADOR,
+//                    NOMBRE_PAIS_JUGADOR,
+//                    NOMBRE_ABREVIADO_PAIS_JUGADOR,
+//                    IMG_SELECCION_JUGADOR,
+//                    IMG_JUGADOR_JUGADOR,
+//                    NOMBRE_SELECCION_JUGADOR,
+//                    POSICION_JUGADOR,
+//                    POSICION_ABREVIADO_JUGADOR,
+//                    NUMERO_JUGADOR,
+//                    NOMBRE_COMPLETO_JUGADOR,
+//                    NOMBRE_CORTO_JUGADOR,
+//                    NACIMIENTO_CORTO_JUGADOR,
+//                    NACIMIENTO_JUGADOR,
+//                    ALTURA_JUGADOR,
+//                    ACTUAL_CLUB_JUGADOR,
+//                    PRIMER_CLUB_JUGADOR,
+//                    LOGROS_JUGADOR
+//                )
+//                val call = apiService.editCreation(creation)
+//                val responseBody = call.body()
+//                Log.d("API Response", "Server Response: $responseBody")
+//                responseBody ?: ServerResponse("")
+//            } catch (e: Exception) {
+//                ServerResponse("")
+//            }
+//        }
+//    }
+
+//    suspend fun deletePublication(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
+//        return withContext(Dispatchers.IO) {
+//            try {
+//                val idResponse = IdResponse(UUID_JUGADOR, CORREO_USUARIO)
+//                val call = apiService.deleteCreation(idResponse)
+//                val responseBody = call.body()
+//                Log.d("API Response", "Server Response: $responseBody")
+//                responseBody ?: ServerResponse("")
+//            } catch (e: Exception) {
+//                ServerResponse("")
+//            }
+//        }
+//    }
+
+    suspend fun removeFavorite(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
         return withContext(Dispatchers.IO) {
             try {
-                val idResponse = IdResponse(idPublication, email)
+                val idResponse = UserRedeem(UUID_JUGADOR, CORREO_USUARIO)
                 val call = apiService.deleteFromFavorites(idResponse)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")
@@ -204,10 +214,10 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
         }
     }
 
-    suspend fun addFavoritePublication(idPublication: Int, email: String): ServerResponse {
+    suspend fun addFavoritePublication(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
         return withContext(Dispatchers.IO) {
             try {
-                val idResponse = IdResponse(idPublication, email)
+                val idResponse = UserRedeem(UUID_JUGADOR, CORREO_USUARIO)
                 val call = apiService.addToFavorites(idResponse)
                 val responseBody = call.body()
                 Log.d("API Response", "Server Response: $responseBody")

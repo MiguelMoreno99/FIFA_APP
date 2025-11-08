@@ -7,23 +7,13 @@ import com.example.diyapp.data.adapter.user.User
 import com.example.diyapp.data.database.entities.toDatabase
 import com.example.diyapp.data.model.CreationModel
 import com.example.diyapp.data.model.UserModel
+import java.util.UUID
 import javax.inject.Inject
 
 class UseCases @Inject constructor(
     private val repository: MainRepository
 ) {
-
-    suspend fun getFeedExplore(): List<CreationModel> {
-        val feed = repository.getFeedExploreFromApi()
-        return if (feed.isNotEmpty()) {
-            repository.clearPublications()
-            repository.insertCreations(feed.map { it.toDatabase() })
-            feed
-        } else {
-            repository.getFeedExploreFromDataBase()
-        }
-    }
-
+    //USER
     suspend fun getUser(CORREO_USUARIO: String): List<UserModel> {
         val users = repository.getUserFromApi(CORREO_USUARIO)
         return if (users.isNotEmpty()) {
@@ -34,15 +24,6 @@ class UseCases @Inject constructor(
             repository.getUserFromDataBase(CORREO_USUARIO)
         }
     }
-
-    suspend fun getFeedFavorite(email: String): List<FeedFavorites> {
-        return repository.getFeedFavorite(email)
-    }
-
-    suspend fun getFeedCreations(email: String): List<FeedCreations> {
-        return repository.getFeedCreations(email)
-    }
-
     suspend fun editUser(
         CORREO_USUARIO: String,
         NOMBRE_USUARIO: String,
@@ -52,7 +33,6 @@ class UseCases @Inject constructor(
     ): List<User> {
         return repository.editUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
     }
-
     suspend fun registerUser(
         CORREO_USUARIO: String,
         NOMBRE_USUARIO: String,
@@ -63,57 +43,67 @@ class UseCases @Inject constructor(
         return repository.registerUser(CORREO_USUARIO, NOMBRE_USUARIO, APELLIDO_USUARIO, CONTRASEÑA_USUARIO, FOTO_PERFIL_USUARIO)
     }
 
-    suspend fun createPublication(
-        email: String,
-        title: String,
-        theme: String,
-        photoMain: String,
-        description: String,
-        instructions: String,
-        photoProcess: List<String>
+    //ALBUM
+    suspend fun getAllPlayers(): List<CreationModel> {
+        val feed = repository.getAllPlayersFromApi()
+        return if (feed.isNotEmpty()) {
+            repository.clearPublications()
+            repository.insertCreations(feed.map { it.toDatabase() })
+            feed
+        } else {
+            repository.getFeedExploreFromDataBase()
+        }
+    }
+
+    suspend fun getUserFavorites(CORREO_USUARIO: String): List<FeedFavorites> {
+        return repository.getUserFavorites(CORREO_USUARIO)
+    }
+
+    suspend fun userRedeemCard(
+        UUID_JUGADOR: UUID,
+        CORREO_USUARIO: String
     ): ServerResponse {
-        return repository.createPublication(
-            email,
-            title,
-            theme,
-            photoMain,
-            description,
-            instructions,
-            photoProcess
+        return repository.userRedeemCard(
+            UUID_JUGADOR,
+            CORREO_USUARIO
         )
     }
 
-    suspend fun editPublication(
-        idPublication: Int,
-        email: String,
-        title: String,
-        theme: String,
-        photoMain: String,
-        description: String,
-        instructions: String,
-        photoProcess: List<String>
-    ): ServerResponse {
-        return repository.editPublication(
-            idPublication,
-            email,
-            title,
-            theme,
-            photoMain,
-            description,
-            instructions,
-            photoProcess
-        )
+//    suspend fun getFeedCreations(email: String): List<FeedCreations> {
+//        return repository.getFeedCreations(email)
+//    }
+
+//    suspend fun editPublication(
+//        idPublication: Int,
+//        email: String,
+//        title: String,
+//        theme: String,
+//        photoMain: String,
+//        description: String,
+//        instructions: String,
+//        photoProcess: List<String>
+//    ): ServerResponse {
+//        return repository.editPublication(
+//            idPublication,
+//            email,
+//            title,
+//            theme,
+//            photoMain,
+//            description,
+//            instructions,
+//            photoProcess
+//        )
+//    }
+
+//    suspend fun deletePublication(idPublication: Int, email: String): ServerResponse {
+//        return repository.deletePublication(idPublication, email)
+//    }
+
+    suspend fun removeFavorite(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
+        return repository.removeFavorite(UUID_JUGADOR, CORREO_USUARIO)
     }
 
-    suspend fun deletePublication(idPublication: Int, email: String): ServerResponse {
-        return repository.deletePublication(idPublication, email)
-    }
-
-    suspend fun removeFavorite(idPublication: Int, email: String): ServerResponse {
-        return repository.removeFavorite(idPublication, email)
-    }
-
-    suspend fun addFavoritePublication(idPublication: Int, email: String): ServerResponse {
-        return repository.addFavoritePublication(idPublication, email)
+    suspend fun addFavoritePublication(UUID_JUGADOR: UUID, CORREO_USUARIO: String): ServerResponse {
+        return repository.addFavoritePublication(UUID_JUGADOR, CORREO_USUARIO)
     }
 }

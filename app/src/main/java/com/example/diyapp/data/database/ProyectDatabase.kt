@@ -11,7 +11,7 @@ import com.example.diyapp.data.database.entities.UserEntity
 
 @Database(
     entities = [UserEntity::class, CreationEntity::class, FavoriteEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class ProjectDatabase : RoomDatabase() {

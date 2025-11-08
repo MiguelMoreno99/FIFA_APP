@@ -87,6 +87,8 @@
     <string name="unableToLoadData">Unable to load Data!</string>
     <string name="error">Error!</string>
     <string name="error2">Something went Wrong!</string>
+    <string name="alreadyFavorite">You already have it in favorites!</string>
+
 
     <string name="scanCanceled">Scan Canceled</string>
     <string name="scanCompleted">Scanned Successfully</string>

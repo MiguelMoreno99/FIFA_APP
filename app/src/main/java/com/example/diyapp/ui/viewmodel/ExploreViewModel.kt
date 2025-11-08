@@ -21,7 +21,7 @@ class ExploreViewModel @Inject constructor(
     fun loadFeed() {
         isLoading.value = true
         viewModelScope.launch {
-            val response = useCases.getFeedExplore()
+            val response = useCases.getAllPlayers()
             isLoading.value = false
             if (response.isNotEmpty()) {
                 feed.value = response

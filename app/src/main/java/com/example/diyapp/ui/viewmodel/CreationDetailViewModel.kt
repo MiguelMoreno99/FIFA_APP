@@ -17,16 +17,16 @@ class CreationDetailViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
 
     fun deletePublication(idPublication: Int, email: String) {
-        isLoading.value = true
-        viewModelScope.launch {
-            val response = useCases.deletePublication(idPublication, email)
-            operationResult.value = if (response.message.isNotEmpty()) {
-                "PublicationDeleted"
-            } else {
-                "Error"
-            }
-            isLoading.value = false
-        }
+//        isLoading.value = true
+//        viewModelScope.launch {
+//            val response = useCases.deletePublication(idPublication, email)
+//            operationResult.value = if (response.message.isNotEmpty()) {
+//                "PublicationDeleted"
+//            } else {
+//                "Error"
+//            }
+//            isLoading.value = false
+//        }
     }
 
     fun editPublication(
@@ -41,22 +41,22 @@ class CreationDetailViewModel @Inject constructor(
     ) {
         isLoading.value = true
         viewModelScope.launch {
-            val response = useCases.editPublication(
-                idPublication,
-                email,
-                title,
-                theme,
-                photoMain,
-                description,
-                instructions,
-                photoProcess
-            )
-            operationResult.value = if (response.message.isNotEmpty()) {
-                "PublicationEdited"
-            } else {
-                "Error"
-            }
-            isLoading.value = false
+//            val response = useCases.editPublication(
+//                idPublication,
+//                email,
+//                title,
+//                theme,
+//                photoMain,
+//                description,
+//                instructions,
+//                photoProcess
+//            )
+//            operationResult.value = if (response.message.isNotEmpty()) {
+//                "PublicationEdited"
+//            } else {
+//                "Error"
+//            }
+//            isLoading.value = false
         }
     }
 }

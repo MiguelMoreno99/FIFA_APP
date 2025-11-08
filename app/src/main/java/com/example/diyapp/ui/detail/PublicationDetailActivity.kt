@@ -11,6 +11,7 @@ import com.example.diyapp.data.adapter.explore.InstructionsAdapter
 import com.example.diyapp.databinding.ActivityPublicationDetailBinding
 import com.example.diyapp.ui.viewmodel.PublicationDetailViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import coil.load
 
 @AndroidEntryPoint
 class PublicationDetailActivity : AppCompatActivity() {
@@ -36,11 +37,16 @@ class PublicationDetailActivity : AppCompatActivity() {
     private fun setupObservers() {
         viewModel.publication.observe(this) { item ->
             binding.apply {
-                textViewFullNamePlayer.text = item.title
-                textViewBirthPlayer.text = item.theme
-                textViewPositionPlayer.text = item.description
-                textViewHeightPlayer.text = item.instructions
-                playerImage.setImageBitmap(ImageUtils.base64ToBitmap(item.photoMain))
+                countryImage.load(item.IMG_PAIS_JUGADOR)
+                selectionImage.load(item.IMG_SELECCION_JUGADOR)
+                playerImage.load(item.IMG_JUGADOR_JUGADOR)
+                textViewFullNamePlayer.text = item.NOMBRE_COMPLETO_JUGADOR
+                textViewBirthPlayer.text = item.NACIMIENTO_JUGADOR
+                textViewPositionPlayer.text = item.POSICION_JUGADOR
+                textViewHeightPlayer.text = item.ALTURA_JUGADOR
+                textViewCurrentTeamPlayer.text = item.ACTUAL_CLUB_JUGADOR
+                textViewFirstTeamPlayer.text = item.PRIMER_CLUB_JUGADOR
+                textViewSelectionAchievementsPlayer.text = item.LOGROS_JUGADOR
 //                recyclerViewInstructionPhotos.layoutManager = LinearLayoutManager(
 //                    this@PublicationDetailActivity, LinearLayoutManager.HORIZONTAL, false
 //                )
@@ -66,7 +72,7 @@ class PublicationDetailActivity : AppCompatActivity() {
         binding.buttonAddToFavorites.setOnClickListener {
             val item = viewModel.publication.value
             if (SessionManager.isUserLoggedIn(this) && item != null) {
-                viewModel.addFavoritePublication(item.idPublication, CORREO_USUARIO)
+                viewModel.addFavoritePublication(item.UUID_JUGADOR, CORREO_USUARIO)
             } else {
                 SessionManager.showToast(this, R.string.loginRequired)
             }

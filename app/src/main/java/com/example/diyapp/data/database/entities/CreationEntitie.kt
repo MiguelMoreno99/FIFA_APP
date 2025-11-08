@@ -13,8 +13,8 @@ import java.util.UUID
 )
 @TypeConverters(Converters::class)
 data class CreationEntity(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = "UUID_JUGADOR") val UUID_JUGADOR: UUID = UUID.randomUUID(),
+    @PrimaryKey
+    @ColumnInfo(name = "UUID_JUGADOR") val UUID_JUGADOR: UUID,
     @ColumnInfo(name = "IMG_PAIS_JUGADOR") val IMG_PAIS_JUGADOR: String = "",
     @ColumnInfo(name = "NOMBRE_PAIS_JUGADOR") val NOMBRE_PAIS_JUGADOR: String = "",
     @ColumnInfo(name = "NOMBRE_ABREVIADO_PAIS_JUGADOR") val NOMBRE_ABREVIADO_PAIS_JUGADOR: String = "",
@@ -32,7 +32,6 @@ data class CreationEntity(
     @ColumnInfo(name = "ACTUAL_CLUB_JUGADOR") val ACTUAL_CLUB_JUGADOR: String = "",
     @ColumnInfo(name = "PRIMER_CLUB_JUGADOR") val PRIMER_CLUB_JUGADOR: String = "",
     @ColumnInfo(name = "LOGROS_JUGADOR") val LOGROS_JUGADOR: String = ""
-
 )
 
 fun CreationModel.toDatabase() = CreationEntity(

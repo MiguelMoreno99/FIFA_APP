@@ -18,10 +18,10 @@ class FavoriteViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
     val emptyState = MutableLiveData<Boolean>()
 
-    fun loadFavorites(email: String) {
+    fun loadFavorites(CORREO_USUARIO: String) {
         isLoading.value = true
         viewModelScope.launch {
-            val response = useCases.getFeedFavorite(email)
+            val response = useCases.getUserFavorites(CORREO_USUARIO)
             favorites.value = response
             isLoading.value = false
             emptyState.value = response.isEmpty()

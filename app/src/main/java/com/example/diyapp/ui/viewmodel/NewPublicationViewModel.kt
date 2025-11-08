@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.diyapp.R
 import com.example.diyapp.domain.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import java.util.UUID
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,46 +22,37 @@ class NewPublicationViewModel @Inject constructor(
     }
 
     suspend fun createPublication(
-        title: String,
-        description: String,
-        theme: String,
-        instructions: String,
-        mainPhoto: String,
-        photoProcess: List<String>
+        UUID_JUGADOR: UUID,
+        CORREO_USUARIO: String
     ) {
-        if (validateFields(title, description, instructions, mainPhoto, photoProcess)) {
-            val response = useCases.createPublication(
-                CORREO_USUARIO,
-                title,
-                theme,
-                mainPhoto,
-                description,
-                instructions,
-                photoProcess
+//        if (validateFields(title, description, instructions, mainPhoto, photoProcess)) {
+            val response = useCases.userRedeemCard(
+                UUID_JUGADOR,
+                CORREO_USUARIO
             )
             isPublicationCreated.postValue(response.message.isNotEmpty())
-        }
+//        }
     }
 
-    private fun validateFields(
-        title: String,
-        description: String,
-        instructions: String,
-        mainPhoto: String,
-        photoProcess: List<String>
-    ): Boolean {
-        return when {
-            title.isEmpty() || description.isEmpty() || instructions.isEmpty() || mainPhoto.isEmpty() -> {
-                errorMessage.postValue(R.string.fillFields)
-                false
-            }
-
-            photoProcess.isEmpty() -> {
-                errorMessage.postValue(R.string.fillFields)
-                false
-            }
-
-            else -> true
-        }
-    }
+//    private fun validateFields(
+//        title: String,
+//        description: String,
+//        instructions: String,
+//        mainPhoto: String,
+//        photoProcess: List<String>
+//    ): Boolean {
+//        return when {
+//            title.isEmpty() || description.isEmpty() || instructions.isEmpty() || mainPhoto.isEmpty() -> {
+//                errorMessage.postValue(R.string.fillFields)
+//                false
+//            }
+//
+//            photoProcess.isEmpty() -> {
+//                errorMessage.postValue(R.string.fillFields)
+//                false
+//            }
+//
+//            else -> true
+//        }
+//    }
 }

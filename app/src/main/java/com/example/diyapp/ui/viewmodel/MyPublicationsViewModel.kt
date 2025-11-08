@@ -17,12 +17,12 @@ class MyPublicationsViewModel @Inject constructor(
     val errorMessage = MutableLiveData<Int?>()
 
     suspend fun loadFeedCreations(email: String) {
-        val response = useCases.getFeedCreations(email)
-        if (response.isNotEmpty()) {
-            feedCreations.postValue(response)
-            errorMessage.postValue(null)
-        } else {
-            errorMessage.postValue(R.string.notHavePublications)
-        }
+//        val response = useCases.getFeedCreations(email)
+//        if (response.isNotEmpty()) {
+//            feedCreations.postValue(response)
+//            errorMessage.postValue(null)
+//        } else {
+//            errorMessage.postValue(R.string.notHavePublications)
+//        }
     }
 }
