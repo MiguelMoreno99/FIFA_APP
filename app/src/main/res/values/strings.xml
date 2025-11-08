@@ -11,7 +11,7 @@
 
     //Login, register, Manage Account
     <string name="mail">Mail</string>
-    <string name="newPassword">New Password (If you Want to change it)</string>
+    <string name="newPassword">New Password (Optional)</string>
     <string name="password">Password</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="Scan">Scan</string>
@@ -95,12 +95,11 @@
     <string name="scanMessage">Point to your QR Code!</string>
 
 
-    <string name="publicationEdited">Publication Edited!</string>
-    <string name="publicationDeleted">Publication Deleted!</string>
-    <string name="publicationCreated">Publication Created!</string>
-    <string name="noPublications">There are no Publications!</string>
-    <string name="notHavePublications">You not have Publications!</string>
-
+    <string name="publicationEdited">Card Edited!</string>
+    <string name="publicationDeleted">Card Deleted!</string>
+    <string name="publicationCreated">Card Created!</string>
+    <string name="noPublications">There are no Cards!</string>
+    <string name="notHavePublications">You not have Cards!</string>
 
     <string-array name="category_options">
         <item>Reciclaje</item>

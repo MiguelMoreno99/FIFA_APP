@@ -15,7 +15,7 @@ interface CreationsDao {
     suspend fun insertPublication(publications: List<CreationEntity>)
 
     @Query("SELECT * FROM CreationTable")
-    suspend fun getAllCompletedPublications(): List<CreationEntity>
+    suspend fun getAllPlayers(): List<CreationEntity>
 
     @Query("SELECT * FROM CreationTable ORDER BY NOMBRE_PAIS_JUGADOR ASC")
     suspend fun getAllCompletedPublicationsAsc(): List<CreationEntity>

@@ -3,6 +3,7 @@ package com.example.diyapp.ui.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.diyapp.data.SessionManager
 import com.example.diyapp.data.model.CreationModel
 import com.example.diyapp.domain.UseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,10 +19,10 @@ class ExploreViewModel @Inject constructor(
     val isLoading = MutableLiveData<Boolean>()
     val showNoPublicationsMessage = MutableLiveData<Boolean>()
 
-    fun loadFeed() {
+    fun loadFeed(CORREO_USUARIO: String) {
         isLoading.value = true
         viewModelScope.launch {
-            val response = useCases.getAllPlayers()
+            val response = useCases.getAllPlayersByEmail(CORREO_USUARIO)
             isLoading.value = false
             if (response.isNotEmpty()) {
                 feed.value = response

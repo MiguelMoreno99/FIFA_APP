@@ -26,8 +26,8 @@ interface APIService {
     //END POINTS ALBUM
     @GET("album/list/")
     suspend fun getAllPlayers(): Response<List<FeedAlbum>>
-    @GET("album/listUser/")
-    suspend fun getAllPlayersbyUser(@Body userEmail: UserEmail): Response<List<FeedAlbum>>
+    @POST("album/listUser/")
+    suspend fun getAllPlayersByEmail(@Body userEmail: UserEmail): Response<List<FeedAlbum>>
     @POST("album/reclamar/")
     suspend fun userRedeemCard(@Body userRedeem: UserRedeem): Response<ServerResponse>
 

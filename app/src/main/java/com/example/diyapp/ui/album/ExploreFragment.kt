@@ -24,7 +24,7 @@ class ExploreFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var adapter: FeedExploreAdapter
     private val viewModel: ExploreViewModel by viewModels()
-
+    private var userEmail = ""
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -38,14 +38,15 @@ class ExploreFragment : Fragment() {
         setupRecyclerView()
         setupSearchView()
         observeViewModel()
-
-        viewModel.loadFeed()
+        userEmail = SessionManager.getUserInfo(requireContext())["CORREO_USUARIO"].toString()
+        viewModel.loadFeed(userEmail)
     }
 
     override fun onResume() {
         super.onResume()
+        userEmail = SessionManager.getUserInfo(requireContext())["CORREO_USUARIO"].toString()
         lifecycleScope.launch {
-            viewModel.loadFeed()
+                    viewModel.loadFeed(userEmail)
         }
     }
 
@@ -86,8 +87,8 @@ class ExploreFragment : Fragment() {
 
         viewModel.showNoPublicationsMessage.observe(viewLifecycleOwner) { show ->
             if (show) {
-                SessionManager.showToast(requireContext(), R.string.noPublications)
-                adapter.deleteData()
+                    SessionManager.showToast(requireContext(), R.string.noPublications)
+                    adapter.deleteData()
             }
         }
     }

@@ -35,7 +35,7 @@ class LoginFragment : Fragment() {
         viewModel.loginSuccess.observe(viewLifecycleOwner) { isSuccess ->
             if (isSuccess) {
                 saveUserSession()
-                findNavController().navigate(R.id.exploreFragment)
+                findNavController().navigate(R.id.newPublicationFragment)
             } else {
                 SessionManager.showToast(requireContext(), R.string.wrongCredentials)
             }

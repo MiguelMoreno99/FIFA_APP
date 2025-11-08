@@ -32,4 +32,5 @@ object RoomModule {
     @Singleton
     @Provides
     fun provideFavoritesDao(db: ProjectDatabase) = db.getFavoritesDao()
+
 }

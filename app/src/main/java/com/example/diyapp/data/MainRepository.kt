@@ -62,13 +62,24 @@ class MainRepository @Inject constructor(
     }
 
     //ALBUM
+    suspend fun getAllPlayersByEmailFromApi(CORREO_USUARIO: String): List<CreationModel> {
+        val response: List<FeedAlbum> = api.getAllPlayersByEmail(CORREO_USUARIO)
+        return response.map { it.toDomain() }
+    }
+
+    suspend fun getAllPlayersByEmailFromDataBase(): List<CreationModel> {
+        val response: List<CreationEntity> = creationsDao.getAllPlayers()
+        return response.map { it.toDomain() }
+    }
+
+    //ALBUM
     suspend fun getAllPlayersFromApi(): List<CreationModel> {
         val response: List<FeedAlbum> = api.getAllPlayers()
         return response.map { it.toDomain() }
     }
 
-    suspend fun getFeedExploreFromDataBase(): List<CreationModel> {
-        val response: List<CreationEntity> = creationsDao.getAllCompletedPublications()
+    suspend fun getAllPlayersFromDataBase(): List<CreationModel> {
+        val response: List<CreationEntity> = creationsDao.getAllPlayers()
         return response.map { it.toDomain() }
     }
 

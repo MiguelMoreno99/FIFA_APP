@@ -73,6 +73,22 @@ class RetrofitManager @Inject constructor(private val apiService: APIService) {
     }
 
     //ALBUM
+    suspend fun getAllPlayersByEmail(CORREO_USUARIO: String): List<FeedAlbum> {
+        return withContext(Dispatchers.IO) {
+            try {
+                val userEmail = UserEmail(
+                    CORREO_USUARIO
+                )
+                val call = apiService.getAllPlayersByEmail(userEmail)
+                val responseBody = call.body()
+                Log.d("API Response", "Server Response: $responseBody")
+                responseBody ?: emptyList()
+            } catch (e: Exception) {
+                emptyList()
+            }
+        }
+    }
+
     suspend fun getAllPlayers(): List<FeedAlbum> {
         return withContext(Dispatchers.IO) {
             try {

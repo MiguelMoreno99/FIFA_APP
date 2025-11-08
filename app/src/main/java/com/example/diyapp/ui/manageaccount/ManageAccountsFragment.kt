@@ -69,6 +69,7 @@ class ManageAccountsFragment : Fragment() {
         binding.logoutButton.setOnClickListener {
             SessionManager.setUserLoggedIn(requireContext(), false)
             SessionManager.showToast(requireContext(), R.string.logoutSuccessful)
+            viewModel.clearAllDatabaseTables()
             findNavController().navigate(R.id.exploreFragment)
         }
 

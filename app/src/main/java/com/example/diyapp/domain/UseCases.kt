@@ -44,6 +44,17 @@ class UseCases @Inject constructor(
     }
 
     //ALBUM
+    suspend fun getAllPlayersByEmail(CORREO_USUARIO: String): List<CreationModel> {
+        val feed = repository.getAllPlayersByEmailFromApi(CORREO_USUARIO)
+        return if (feed.isNotEmpty()) {
+            repository.clearPublications()
+            repository.insertCreations(feed.map { it.toDatabase() })
+            feed
+        } else {
+            repository.getAllPlayersFromDataBase()
+        }
+    }
+
     suspend fun getAllPlayers(): List<CreationModel> {
         val feed = repository.getAllPlayersFromApi()
         return if (feed.isNotEmpty()) {
@@ -51,7 +62,7 @@ class UseCases @Inject constructor(
             repository.insertCreations(feed.map { it.toDatabase() })
             feed
         } else {
-            repository.getFeedExploreFromDataBase()
+            repository.getAllPlayersFromDataBase()
         }
     }
 
