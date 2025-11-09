@@ -27,6 +27,8 @@ import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.UUID
+
 @AndroidEntryPoint
 class NewPublicationFragment : Fragment() {
 
@@ -127,18 +129,21 @@ class NewPublicationFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        viewModel.isPublicationCreated.observe(viewLifecycleOwner) { success ->
-            if (success) {
-                SessionManager.showToast(requireContext(), R.string.publicationCreated)
-                findNavController().navigate(R.id.myPublicationsFragment)
-            } else {
-                SessionManager.showToast(requireContext(), R.string.error2)
-            }
-        }
-
-        viewModel.errorMessage.observe(viewLifecycleOwner) { messageResId ->
-            messageResId?.let {
-                SessionManager.showToast(requireContext(), it)
+        viewModel.isCardAdded.observe(viewLifecycleOwner) { success ->
+            viewModel.cardMessage.observe(viewLifecycleOwner){result ->
+                if (success) {
+                    if (result == "Estampa reclamada exitosamente"){
+                        SessionManager.showToast(requireContext(), R.string.publicationCreated)
+                        findNavController().navigate(R.id.exploreFragment)
+                    }else if(result == "Esta estampa ya está reclamada por alguien más."){
+                        SessionManager.showToast(requireContext(), R.string.cardAlreadyClaimed)
+                    }else if(result == "Ya tienes esta estampa!"){
+                        SessionManager.showToast(requireContext(), R.string.publicationDeleted)
+                        findNavController().navigate(R.id.exploreFragment)
+                    }
+                } else {
+                    SessionManager.showToast(requireContext(), R.string.error2)
+                }
             }
         }
     }
@@ -147,14 +152,17 @@ class NewPublicationFragment : Fragment() {
         barcodeLauncher = registerForActivityResult(ScanContract()) { result ->
             if (result.contents == null) {
                 SessionManager.showToast(requireContext(), R.string.scanCanceled)
+//                val cardUUIDExample = UUID.fromString("b921a692-b9ed-11f0-8c89-18c04d6599ee")
+//                val cardUUID = result.contents
+//                lifecycleScope.launch {
+//                    viewModel.userRedeemCard(cardUUIDExample)
+//                }
             } else {
-                // We have a result!
-                // The QR code content is in result.contents
-                SessionManager.showToast(requireContext(), R.string.scanCompleted)
-
-                // TODO: Aquí va tu lógica para procesar el código de la estampa.
-                // Por ejemplo, verificar el código y añadir la estampa a la cuenta del usuario.
-                Toast.makeText(requireContext(),result.contents,Toast.LENGTH_LONG).show()
+//                val cardUUIDExample = UUID.fromString("b921a692-b9ed-11f0-8c89-18c04d6599ee")
+                val cardUUID = UUID.fromString(result.contents)
+                lifecycleScope.launch {
+                    viewModel.userRedeemCard(cardUUID)
+                }
             }
         }
         binding.scanButton.setOnClickListener { initScanner() }

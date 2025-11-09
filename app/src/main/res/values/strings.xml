@@ -96,8 +96,11 @@
 
 
     <string name="publicationEdited">Card Edited!</string>
-    <string name="publicationDeleted">Card Deleted!</string>
-    <string name="publicationCreated">Card Created!</string>
+
+    <string name="publicationDeleted">You Already have it!</string>
+    <string name="publicationCreated">Card Added!</string>
+    <string name="cardAlreadyClaimed">Card is already claimed</string>
+
     <string name="noPublications">There are no Cards!</string>
     <string name="notHavePublications">You not have Cards!</string>
 

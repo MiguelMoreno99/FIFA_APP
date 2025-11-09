@@ -14,45 +14,29 @@ class NewPublicationViewModel @Inject constructor(
 ) : ViewModel() {
 
     var CORREO_USUARIO: String = ""
-    val isPublicationCreated = MutableLiveData<Boolean>()
-    val errorMessage = MutableLiveData<Int?>()
+    val isCardAdded = MutableLiveData<Boolean>()
+    val cardMessage = MutableLiveData<String>()
 
     fun setUserEmail(userEmail: String) {
         CORREO_USUARIO = userEmail
     }
 
-    suspend fun createPublication(
-        UUID_JUGADOR: UUID,
-        CORREO_USUARIO: String
+    suspend fun userRedeemCard(
+        UUID_JUGADOR: UUID
     ) {
-//        if (validateFields(title, description, instructions, mainPhoto, photoProcess)) {
             val response = useCases.userRedeemCard(
                 UUID_JUGADOR,
                 CORREO_USUARIO
             )
-            isPublicationCreated.postValue(response.message.isNotEmpty())
-//        }
+        if (response.message == "Estampa reclamada exitosamente"){
+            isCardAdded.postValue(true)
+        }else if (response.message == "Ya tienes esta estampa!"){
+            isCardAdded.postValue(true)
+        }else if (response.message == "Esta estampa ya está reclamada por alguien más."){
+            isCardAdded.postValue(true)
+        }else{
+            isCardAdded.postValue(false)
+        }
+        cardMessage.postValue(response.message)
     }
-
-//    private fun validateFields(
-//        title: String,
-//        description: String,
-//        instructions: String,
-//        mainPhoto: String,
-//        photoProcess: List<String>
-//    ): Boolean {
-//        return when {
-//            title.isEmpty() || description.isEmpty() || instructions.isEmpty() || mainPhoto.isEmpty() -> {
-//                errorMessage.postValue(R.string.fillFields)
-//                false
-//            }
-//
-//            photoProcess.isEmpty() -> {
-//                errorMessage.postValue(R.string.fillFields)
-//                false
-//            }
-//
-//            else -> true
-//        }
-//    }
 }
