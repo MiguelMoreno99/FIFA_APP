@@ -37,7 +37,7 @@ class RegisterAccountViewModel @Inject constructor(
         FOTO_PERFIL_USUARIO: String?
     ): Boolean {
         return when {
-            CORREO_USUARIO.isEmpty() || NOMBRE_USUARIO.isEmpty() || APELLIDO_USUARIO.isEmpty() || CONTRASEÑA_USUARIO.isEmpty() || CONFIRMAR_CONTRASEÑA_USUARIO.isEmpty() || FOTO_PERFIL_USUARIO == null -> {
+            CORREO_USUARIO.isEmpty() || NOMBRE_USUARIO.isEmpty() || APELLIDO_USUARIO.isEmpty() || CONTRASEÑA_USUARIO.isEmpty() || CONFIRMAR_CONTRASEÑA_USUARIO.isEmpty() || FOTO_PERFIL_USUARIO == null || FOTO_PERFIL_USUARIO == ""-> {
                 errorMessage.postValue(R.string.fillFields)
                 false
             }

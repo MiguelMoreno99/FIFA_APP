@@ -91,7 +91,11 @@ class RegisterAccountActivity : AppCompatActivity() {
             val APELLIDO_USUARIO = binding.lastNameEditText.text.toString().trim()
             val CONTRASEÑA_USUARIO = binding.passwordEditText.text.toString().trim()
             val CONFIRMAR_CONTRASEÑA_USUARIO = binding.confirmPasswordEditText.text.toString().trim()
-            val imageBytes = Base64.encodeToString(getBytesFromUri(profileImageUri!!), Base64.DEFAULT)
+            var imageBytes = ""
+
+            if (profileImageUri != null){
+                imageBytes = Base64.encodeToString(getBytesFromUri(profileImageUri!!), Base64.DEFAULT)
+            }
 
             lifecycleScope.launch {
                 viewModel.registerAccount(

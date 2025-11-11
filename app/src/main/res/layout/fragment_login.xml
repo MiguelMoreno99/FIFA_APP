@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="60dp"
     android:fillViewport="true"
     tools:context=".ui.login.LoginFragment">
 
@@ -11,24 +12,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp">
 
         <LinearLayout
             android:id="@+id/form_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_max="500dp"
-            app:layout_constraintVertical_bias="0.3">
+            app:layout_constraintWidth_max="500dp">
+
             <ImageView
                 android:id="@+id/logoImageView"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="250dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
                 android:layout_marginBottom="50dp"
                 android:contentDescription="@string/app_name"
@@ -37,8 +40,8 @@
             <EditText
                 android:id="@+id/emailEditText"
                 android:layout_width="320dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="16dp"
                 android:autofillHints=""
@@ -51,8 +54,8 @@
             <EditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="320dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:autofillHints=""
                 android:background="@drawable/edittext_background"
@@ -64,8 +67,8 @@
             <Button
                 android:id="@+id/loginButton"
                 android:layout_width="320dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="60dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="40dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/black"
@@ -76,11 +79,15 @@
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="320dp"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:backgroundTint="@color/black"
                 android:text="@string/register"
                 android:textColor="@android:color/white"
                 android:theme="@style/Feed_Letters" />
 
-        </LinearLayout> </androidx.constraintlayout.widget.ConstraintLayout> </ScrollView>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
